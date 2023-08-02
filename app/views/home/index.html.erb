@@ -1,0 +1,8 @@
+<h1>Hello
+<% if user_signed_in? %>
+    User, <%= link_to "Edit your account", edit_user_registration_path %>
+<% else %>
+    Stranger, <%= link_to "Sign in", new_user_session_path %>?
+<% end %></h1>
+
+<p>Тут ви можете отримати послуги, пов’язані із пенсією, пільгами або отриманням допомоги.</p>

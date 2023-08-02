@@ -1,6 +1,17 @@
-Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+# frozen_string_literal: true
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+Rails.application.routes.draw do
+  devise_for :users, path: '/account', controllers: {
+    confirmations: 'confirmations'
+  }
+
+  devise_scope :user do
+    get '/account/sign_out' => 'devise/sessions#destroy'
+  end
+
+  scope '(:locale)', locale: /en|uk/ do
+    resources :users, :home
+  end
+
+  root 'home#index'
 end
