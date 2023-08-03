@@ -1,17 +1,16 @@
-# frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, path: '/account', controllers: {
-    confirmations: 'confirmations'
-  }
+  root 'home#index'
+
+  get '/:locale' => 'home#index'
 
   devise_scope :user do
-    get '/account/sign_out' => 'devise/sessions#destroy'
+    get '(/:locale)/account/sign_out' => 'devise/sessions#destroy'
   end
 
-  scope '(:locale)', locale: /en|uk/ do
-    resources :users, :home
+  scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
+    devise_for :users, path: '/account', controllers: {
+      confirmations: 'confirmations'
+    }
   end
-
-  root 'home#index'
 end

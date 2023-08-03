@@ -1,9 +1,18 @@
 <footer>
   <div class="wrapper">
-    <div id="copyright">
+    <div id="copyright" class="float-left">
       <span>&copy;</span>
       <span itemprop="copyrightYear"><%= Date.today.year %></span>
       <span itemprop="copyrightHolder">Example.com</span>
+    </div>
+    <div class="float-right">
+      <% I18n.available_locales.each do |locale| %>
+        <% if I18n.locale == locale %>
+          <span class="cursor-default"><%= locale %></span>
+        <% else %>
+          <%= link_to locale, url_for(locale: locale), class: "opacity-50 hover:opacity-100" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </footer>

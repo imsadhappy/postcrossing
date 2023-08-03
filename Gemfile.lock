@@ -179,6 +179,9 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    route_translator (13.2.1)
+      actionpack (>= 5.2, < 7.1)
+      activesupport (>= 5.2, < 7.1)
     rubyzip (2.3.2)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -237,6 +240,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.6)
+  route_translator
   selenium-webdriver
   sprockets-rails
   stimulus-rails

@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  header:
+    home: "Home"
+    my_account: "My Account"
+    sign_in: "Sign In"
+    sign_up: "Sign Up"
+    sign_out: "Sign Out"

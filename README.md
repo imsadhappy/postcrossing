@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* run dev server: `rails s` or `rails server`
+* run tailwind watcher: `rails tailwindcss:watch`
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Soralgraph for VS Code: https://www.youtube.com/watch?v=mkLDPpDSWng end with `solargraph scan -v`

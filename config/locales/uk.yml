@@ -1,2 +1,8 @@
 uk:
   hello: "Привіт світ"
+  header:
+    home: "Головна"
+    my_account: "Мій обліковий запис"
+    sign_in: "Вхід"
+    sign_up: "Реєстрація"
+    sign_out: "Вийти"

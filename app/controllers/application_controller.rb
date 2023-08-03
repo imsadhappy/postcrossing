@@ -1,8 +1,9 @@
-# frozen_string_literal: true
-
 # Application Controller
 class ApplicationController < ActionController::Base
-  def default_url_options
-    { locale: I18n.locale }
+  protect_from_forgery
+  around_action :switch_locale
+
+  def switch_locale(&action)
+    I18n.with_locale(params[:locale] || I18n.default_locale, &action)
   end
 end
