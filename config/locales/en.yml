@@ -37,3 +37,6 @@ en:
     sign_in: "Sign In"
     sign_up: "Sign Up"
     sign_out: "Sign Out"
+  language_name:
+    en: "english"
+    uk: "ukrainian"

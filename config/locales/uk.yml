@@ -6,3 +6,6 @@ uk:
     sign_in: "Вхід"
     sign_up: "Реєстрація"
     sign_out: "Вийти"
+  language_name:
+    en: "англійська"
+    uk: "українська"

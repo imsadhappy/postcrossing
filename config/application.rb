@@ -1,4 +1,3 @@
-
 require_relative 'boot'
 require 'rails/all'
 
@@ -6,6 +5,7 @@ require 'rails/all'
 # youve limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# PostCrossing
 module PostCrossing
   # Application
   class Application < Rails::Application

@@ -3,14 +3,19 @@
     <div id="copyright" class="float-left">
       <span>&copy;</span>
       <span itemprop="copyrightYear"><%= Date.today.year %></span>
-      <span itemprop="copyrightHolder">Example.com</span>
+      <span itemprop="copyrightHolder"><%= request.env['HTTP_HOST'] %></span>
     </div>
     <div class="float-right">
       <% I18n.available_locales.each do |locale| %>
+        <% language_name = I18n.t("language_name.#{locale}", locale: locale) %>
         <% if I18n.locale == locale %>
-          <span class="cursor-default"><%= locale %></span>
+          <span class="cursor-default"><%= language_name %></span>
         <% else %>
-          <%= link_to locale, url_for(locale: locale), class: "opacity-50 hover:opacity-100" %>
+          <%= link_to language_name,
+              alt_url_for(locale) + "?preferred_locale=#{locale}",
+              hreflang: locale,
+              rel: 'alternate',
+              class: 'opacity-50 hover:opacity-100' %>
         <% end %>
       <% end %>
     </div>

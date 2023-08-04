@@ -1,7 +1,8 @@
-
 Rails.application.routes.draw do
   root 'home#index'
 
+  get "/#{I18n.default_locale}", to: redirect('/')
+  get "/#{I18n.default_locale}/*url", to: redirect('/%<url>')
   get '/:locale' => 'home#index'
 
   devise_scope :user do
