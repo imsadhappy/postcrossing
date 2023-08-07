@@ -1,11 +1,25 @@
-<h1>Hello
-<% if user_signed_in? %>
-    User, <%= link_to "Edit your account", edit_user_registration_path %>
-<% else %>
-    Stranger, <%= link_to "Sign in", new_user_session_path %>?
-<% end %></h1>
+<% if Current.user %>
 
-<p>Тут ви можете отримати послуги, пов’язані із пенсією, пільгами або отриманням допомоги.</p>
+<p>Signed as <%= Current.user.email %></p>
 
+<h2>Login and verification</h2>
 
-<%= current_user %>
+<div>
+  <%= link_to "Change password", edit_password_path %>
+</div>
+
+<div>
+  <%= link_to "Change email address", edit_identity_email_path %>
+</div>
+
+<h2>Access history</h2>
+
+<div>
+  <%= link_to "Devices & Sessions", sessions_path %>
+</div>
+
+<br>
+
+<%= button_to "Log out", Current.session, method: :delete %>
+
+<% end %>

@@ -1,7 +1,19 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  before_action :save_prefered_locale, :use_preferred_locale
+  before_action :set_current_request_details
+  before_action :authenticate
+  before_action :save_prefered_locale
   around_action :set_locale
+
+  def set_locale(&)
+    preferred_locale = cookies[:preferred_locale]
+    current_locale = params[:locale] || I18n.default_locale
+    locale = preferred_locale && preferred_locale != current_locale.to_s ? preferred_locale : current_locale
+
+    I18n.with_locale(locale, &)
+  end
+
+  private
 
   def save_prefered_locale
     preferred_locale = params[:preferred_locale]
@@ -12,24 +24,15 @@ class ApplicationController < ActionController::Base
     redirect_to request.path
   end
 
-  def use_preferred_locale
-    preferred_locale = cookies[:preferred_locale]
-    current_locale = params[:locale] || I18n.default_locale
+  def authenticate
+    session_record = Session.find_by_id(cookies.signed[:session_token])
+    return unless session_record
 
-    return unless preferred_locale && preferred_locale != current_locale.to_s
-
-    redirect_to controller: params[:controller], action: params[:action], locale: preferred_locale
+    Current.session = session_record
   end
 
-  def set_locale(&action)
-    I18n.with_locale(params[:locale] || I18n.default_locale, &action)
-  end
-
-  def after_sign_in_path_for(_request)
-    edit_user_registration_path
-  end
-
-  def after_sign_out_path_for(_request)
-    new_user_session_path
+  def set_current_request_details
+    Current.user_agent = request.user_agent
+    Current.ip_address = request.ip
   end
 end

@@ -70,8 +70,10 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'devise', '~> 4.9'
-
 gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'route_translator'
+
+gem 'authentication-zero', '~> 2.16'
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'bcrypt', '~> 3.1.7'

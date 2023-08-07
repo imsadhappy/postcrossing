@@ -2,16 +2,15 @@
 
   <div class="wrapper">
 
-    <%= link_to I18n.t("header.home"), home_path %>
+    <%= link_to I18n.t("header.home"), root_path %>
 
     <div class="float-right">
 
-      <% if user_signed_in? %>
-          <%= link_to I18n.t("header.my_account"), edit_user_registration_path %>
-          <%= link_to I18n.t("header.sign_out"), destroy_user_session_path, method: :delete %>
+      <% if Current.user %>
+          <%= button_to I18n.t("header.sign_out"), Current.session, method: :delete %>
       <% else %>
-          <%= link_to I18n.t("header.sign_in"), new_user_session_path %>
-          <%= link_to I18n.t("header.sign_up"), new_user_registration_path %>
+          <%= link_to I18n.t("header.sign_in"), sign_in_path %>
+          <%= link_to I18n.t("header.sign_up"), sign_up_path %>
       <% end %>
 
     </div>
