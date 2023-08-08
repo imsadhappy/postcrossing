@@ -1,5 +1,5 @@
-module Identity
-  # app/controllers/identity/emails_controller.rb
+module Account
+  # app/controllers/user/emails_controller.rb
   class EmailsController < ApplicationController
     before_action :set_user
 
@@ -7,7 +7,7 @@ module Identity
 
     def update
       if !@user.authenticate(params[:current_password])
-        redirect_to edit_identity_email_path, alert: 'The password you entered is incorrect'
+        redirect_to edit_account_email_path, alert: 'The password you entered is incorrect'
       elsif @user.update(email: params[:email])
         redirect_to_root
       else

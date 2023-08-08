@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class Identity::EmailsTest < ApplicationSystemTestCase
+class Account::EmailsTest < ApplicationSystemTestCase
   setup do
     @user = sign_in_as(users(:lazaro_nixon))
   end

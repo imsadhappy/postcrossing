@@ -1,17 +1,14 @@
-<h1>Change your password</h1>
+<h1>Reset your password</h1>
 
-<%= form_with(url: password_path, method: :patch) do |form| %>
+<%= form_with(url: account_password_reset_path, method: :patch) do |form| %>
 
   <%= render "account/shared/errors" %>
 
-  <div>
-    <%= form.label :current_password %>
-    <%= form.password_field :current_password, required: true, autofocus: true, autocomplete: "current-password" %>
-  </div>
+  <%= form.hidden_field :sid, value: params[:sid] %>
 
   <div>
     <%= form.label :password, "New password" %>
-    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
+    <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password" %>
     <div>12 characters minimum.</div>
   </div>
 

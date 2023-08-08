@@ -5,6 +5,10 @@
 
 Soralgraph for VS Code: https://www.youtube.com/watch?v=mkLDPpDSWng end with `solargraph scan -v`
 
+Version 0.1.2
+- renamed identity into account
+- added account details & destroy
+
 Version 0.1.1
 - added omniauth for google & facebook
 - created production & development credentials

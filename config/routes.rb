@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback', to: 'sessions/omniauth#create'
   resources :sessions, only: [:index, :show, :destroy]
   resource  :password, only: [:edit, :update]
-  namespace :identity do
+  namespace :account do
     resource :email,              only: [:edit, :update]
     resource :email_verification, only: [:show, :create]
     resource :password_reset,     only: [:new, :edit, :create, :update]
+    resource :detail,             only: [:edit, :update, :destroy]
   end
 end

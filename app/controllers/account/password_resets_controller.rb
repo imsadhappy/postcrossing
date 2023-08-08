@@ -1,5 +1,5 @@
-module Identity
-  # app/controllers/identity/password_resets_controller.rb
+module Account
+  # app/controllers/user/password_resets_controller.rb
   class PasswordResetsController < ApplicationController
     skip_before_action :authenticate
 
@@ -14,7 +14,7 @@ module Identity
         send_password_reset_email
         redirect_to sign_in_path, notice: 'Check your email for reset instructions'
       else
-        redirect_to new_identity_password_reset_path, alert: "You can't reset your password until you verify your email"
+        redirect_to new_account_password_reset_path, alert: "You can't reset your password until you verify your email"
       end
     end
 
@@ -33,7 +33,7 @@ module Identity
       token = PasswordResetToken.find_signed!(params[:sid])
       @user = token.user
     rescue StandardError
-      redirect_to new_identity_password_reset_path, alert: 'That password reset link is invalid'
+      redirect_to new_account_password_reset_path, alert: 'That password reset link is invalid'
     end
 
     def user_params
