@@ -1,5 +1,14 @@
 uk:
   hello: "Привіт світ"
+  title:
+    home:
+      index: "Головна"
+    sessions:
+      new: "Вхід"
+    registrations:
+      new: "Реєстрація"
+    password_resets:
+      new: "Скинути пароль"
   header:
     home: "Головна"
     my_account: "Мій обліковий запис"
@@ -9,3 +18,6 @@ uk:
   language_name:
     en: "англійська"
     uk: "українська"
+  errors:
+    attributes:
+      taken: "вже зареєстрований"

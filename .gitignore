@@ -37,3 +37,7 @@
 .solargraph.yml
 .rubocop.yml
 Gemfile.lock
+
+/config/credentials/development.key
+
+/config/credentials/production.key

@@ -31,6 +31,15 @@
 
 en:
   hello: "Hello world"
+  title:
+    home:
+      index: "Home"
+    sessions:
+      new: "Sign In"
+    registrations:
+      new: "Sign Up"
+    password_resets:
+      new: "Reset Password"
   header:
     home: "Home"
     my_account: "My Account"
@@ -40,3 +49,6 @@ en:
   language_name:
     en: "english"
     uk: "ukrainian"
+  errors:
+    attributes:
+      taken: "already taken"

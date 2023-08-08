@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html>
 
   <head>
 
     <meta charset="UTF-8">
-    <title><%= I18n.t "hello" %></title>
+    <title><%= I18n.t("title.#{controller_name}.#{action_name}") %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <%= csrf_meta_tags %>
@@ -16,9 +16,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body itemscope itemtype="http://schema.org/WebPage">
+  <body lang="<%= I18n.locale %>">
 
-    <div class="site">
+    <div class="page" itemscope itemtype="http://schema.org/WebPage">
 
       <%= render "layouts/shared/header" %>
 

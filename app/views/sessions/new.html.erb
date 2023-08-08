@@ -1,6 +1,3 @@
-<p style="color: green"><%= notice %></p>
-<p style="color: red"><%= alert %></p>
-
 <h1>Sign in</h1>
 
 <%= form_with(url: sign_in_path) do |form| %>
@@ -19,10 +16,17 @@
   </div>
 <% end %>
 
-<br>
+<div>
+  <%= button_to "Sign in with Facebook", "/auth/facebook", "data-turbo" => false %>
+</div>
 
+<div>
+  <%= button_to "Sign in with Google", "/auth/google_oauth2", "data-turbo" => false %>
+</div>
 
-<br>
+<div>
+  <%= button_to "Sign in with OmniAuth", "/auth/developer", "data-turbo" => false %>
+</div>
 
 <div>
   <%= link_to "Sign up", sign_up_path %> |

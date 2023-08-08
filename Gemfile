@@ -72,8 +72,17 @@ end
 
 gem 'tailwindcss-rails', '~> 2.0'
 
-gem 'route_translator'
-
 gem 'authentication-zero', '~> 2.16'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem 'bcrypt', '~> 3.1.7'
+
+# Use OmniAuth to support multi-provider authentication [https://github.com/omniauth/omniauth]
+gem 'omniauth'
+
+# Provides a mitigation against CVE-2015-9284 [https://github.com/cookpad/omniauth-rails_csrf_protection]
+gem 'omniauth-rails_csrf_protection'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'
