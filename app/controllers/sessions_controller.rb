@@ -12,12 +12,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-
     if user&.authenticate(params[:password])
       @session = user.sessions.create!
-      cookies.signed.permanent[:session_token] = { value: @session.id, httponly: true }
-
-      redirect_to edit_account_detail_path, notice: 'Signed in successfully'
+      helpers.session_record @session.id
+      redirect_to account_detail_path, notice: 'Signed in successfully'
     else
       redirect_to sign_in_path(email_hint: params[:email]), alert: 'That email or password is incorrect'
     end
@@ -25,7 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy
     @session.destroy
-    redirect_to root_path, notice: 'That session has been logged out'
+    redirect_to account_detail_path, notice: 'Session has been logged out'
   end
 
   private

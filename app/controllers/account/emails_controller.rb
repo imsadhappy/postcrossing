@@ -19,14 +19,15 @@ module Account
 
     def set_user
       @user = Current.user
+      redirect_to sign_in_path unless @user
     end
 
     def redirect_to_root
       if @user.email_previously_changed?
         resend_email_verification
-        redirect_to root_path, notice: 'Your email has been changed'
+        redirect_to account_detail_path, notice: 'Your email has been changed'
       else
-        redirect_to root_path
+        redirect_to account_detail_path
       end
     end
 

@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get  '/auth/failure',            to: 'sessions/omniauth#failure'
   get  '/auth/:provider/callback', to: 'sessions/omniauth#create'
   post '/auth/:provider/callback', to: 'sessions/omniauth#create'
-  resources :sessions, only: [:index, :show, :destroy]
-  resource  :password, only: [:edit, :update]
+  resources :sessions, only: %i[index show destroy]
+  resource  :password, only: %i[edit update]
+  match '/account', to: redirect('/account/detail'), via: %i[get post]
   namespace :account do
-    resource :email,              only: [:edit, :update]
-    resource :email_verification, only: [:show, :create]
-    resource :password_reset,     only: [:new, :edit, :create, :update]
-    resource :detail,             only: [:edit, :update, :destroy]
+    resource :email,              only: %i[edit update]
+    resource :email_verification, only: %i[show create]
+    resource :password_reset,     only: %i[new edit create update]
+    resource :detail,             only: %i[show edit update destroy]
   end
+  match '*path', to: redirect('/404.html'), via: %i[get post]
 end

@@ -19,5 +19,5 @@ uk:
     en: "англійська"
     uk: "українська"
   errors:
-    attributes:
-      taken: "вже зареєстрований"
+    messages:
+      taken: "вже зайнято"

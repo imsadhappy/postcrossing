@@ -1,6 +1,7 @@
 <% if Current.user.verified? %>
   <h1>Change your email</h1>
 <% else %>
+  <h1>Verify your email</h1>
   <%= render "account/shared/verify" %>
 <% end %>
 

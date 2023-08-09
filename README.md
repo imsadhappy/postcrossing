@@ -1,9 +1,13 @@
 # README
 
+* install gems: `bundle install`
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
-Soralgraph for VS Code: https://www.youtube.com/watch?v=mkLDPpDSWng end with `solargraph scan -v`
+Version 0.1.3
+- session cookie setup
+- redirects
+- application helpers
 
 Version 0.1.2
 - renamed identity into account

@@ -3,6 +3,8 @@ module Account
   class DetailsController < ApplicationController
     before_action :set_user
 
+    def show; end
+
     def edit; end
 
     def update
@@ -15,6 +17,7 @@ module Account
 
     def destroy
       @user.destroy
+      cookies.delete :session_id
       redirect_to root_path, notice: 'Your account has been deleted'
     end
 
@@ -22,6 +25,7 @@ module Account
 
     def set_user
       @user = Current.user
+      redirect_to sign_in_path unless @user
     end
   end
 end

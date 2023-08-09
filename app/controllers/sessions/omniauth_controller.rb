@@ -9,9 +9,8 @@ module Sessions
 
       if @user.save
         session_record = @user.sessions.create!
-        cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
-
-        redirect_to root_path, notice: 'Signed in successfully'
+        helpers.session_record session_record.id
+        redirect_to account_detail_path, notice: 'Signed in successfully'
       else
         redirect_to sign_in_path, alert: 'Authentication failed'
       end

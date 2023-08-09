@@ -1,25 +1,3 @@
 <% if Current.user %>
 
-<h1>Hello <%= Current.user.email %></h1>
-
-<div>
-  <%= link_to "Change password", edit_password_path %>
-</div>
-
-<div>
-  <%= link_to "Change email address", edit_account_email_path %>
-</div>
-
-<div>
-  <%= link_to "Devices & Sessions", sessions_path %>
-</div>
-
-<div>
-  <%= button_to "Log out", Current.session, method: :delete %>
-</div>
-
-<div>
-  <%= button_to "Delete my account", account_detail_path, method: :delete, data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" } %>
-</div>
-
 <% end %>

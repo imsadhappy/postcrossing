@@ -11,10 +11,9 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       session_record = @user.sessions.create!
-      cookies.signed.permanent[:session_token] = { value: session_record.id, httponly: true }
-
+      helpers.session_record session_record.id
       send_email_verification
-      redirect_to root_path, notice: 'Welcome! You have signed up successfully'
+      redirect_to account_detail_path, notice: 'Welcome! You have signed up successfully'
     else
       render :new, status: :unprocessable_entity
     end

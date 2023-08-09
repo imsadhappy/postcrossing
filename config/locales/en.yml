@@ -50,5 +50,5 @@ en:
     en: "english"
     uk: "ukrainian"
   errors:
-    attributes:
+    messages:
       taken: "already taken"

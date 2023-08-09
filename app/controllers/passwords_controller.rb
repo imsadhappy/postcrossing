@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
     if !@user.authenticate(params[:current_password])
       redirect_to edit_password_path, alert: 'The current password you entered is incorrect'
     elsif @user.update(user_params)
-      redirect_to root_path, notice: 'Your password has been changed'
+      redirect_to account_detail_path, notice: 'Your password has been changed'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -18,6 +18,7 @@ class PasswordsController < ApplicationController
 
   def set_user
     @user = Current.user
+    redirect_to sign_in_path unless @user
   end
 
   def user_params
