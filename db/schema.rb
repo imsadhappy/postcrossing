@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_083853) do
     t.string "password_digest", null: false
     t.boolean "verified", default: false, null: false
     t.string "provider"
+    t.string "name", null: false
+    t.string "role", default: "user", null: false
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,16 +2,16 @@
 class ApplicationController < ActionController::Base
   before_action :current_details
   before_action :authenticate
-  before_action :prefered_locale
-  around_action :current_locale
+  before_action :change_locale
+  around_action :set_locale
 
   private
 
-  def current_locale(&)
+  def set_locale(&)
     I18n.with_locale(helpers.current_locale, &)
   end
 
-  def prefered_locale
+  def change_locale
     redirect_to request.path if helpers.preferred_locale
   end
 

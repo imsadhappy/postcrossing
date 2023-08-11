@@ -7,7 +7,7 @@ module Account
 
     def update
       if !@user.authenticate(params[:current_password])
-        redirect_to edit_account_email_path, alert: 'The password you entered is incorrect'
+        redirect_to edit_account_email_path, alert: t('alert.password.incorrect')
       elsif @user.update(email: params[:email])
         redirect_to_root
       else
@@ -25,7 +25,7 @@ module Account
     def redirect_to_root
       if @user.email_previously_changed?
         resend_email_verification
-        redirect_to account_detail_path, notice: 'Your email has been changed'
+        redirect_to account_detail_path, notice: t('notice.email_changed')
       else
         redirect_to account_detail_path
       end

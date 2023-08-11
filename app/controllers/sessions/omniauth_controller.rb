@@ -8,11 +8,10 @@ module Sessions
       @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
 
       if @user.save
-        session_record = @user.sessions.create!
-        helpers.session_record session_record.id
-        redirect_to account_detail_path, notice: 'Signed in successfully'
+        helpers.create_session(@user)
+        redirect_to account_detail_path, notice: t('notice.session_created')
       else
-        redirect_to sign_in_path, alert: 'Authentication failed'
+        redirect_to sign_in_path, alert: t('alert.auth_failed')
       end
     end
 
@@ -23,11 +22,19 @@ module Sessions
     private
 
     def user_params
-      { email: omniauth.info.email, password: SecureRandom.base58, verified: true }
+      {
+        name: omniauth.info.name,
+        email: omniauth.info.email,
+        password: SecureRandom.base58,
+        verified: true
+      }
     end
 
     def omniauth_params
-      { provider: omniauth.provider, uid: omniauth.uid }
+      {
+        provider: omniauth.provider,
+        uid: omniauth.uid
+      }
     end
 
     def omniauth

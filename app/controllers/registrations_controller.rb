@@ -10,10 +10,9 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session_record = @user.sessions.create!
-      helpers.session_record session_record.id
+      helpers.create_session(@user)
       send_email_verification
-      redirect_to account_detail_path, notice: 'Welcome! You have signed up successfully'
+      redirect_to account_detail_path, notice: t('notice.registration_successful')
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +21,7 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password, :password_confirmation)
+    params.permit(:name, :email, :password, :password_confirmation)
   end
 
   def send_email_verification

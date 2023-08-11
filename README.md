@@ -4,6 +4,9 @@
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
+Version 0.1.4
+- i18n
+
 Version 0.1.3
 - session cookie setup
 - redirects

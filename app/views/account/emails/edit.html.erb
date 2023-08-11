@@ -1,25 +1,24 @@
 <% if Current.user.verified? %>
-  <h1>Change your email</h1>
+  <h1><%= t('title.emails.edit') %></h1>
 <% else %>
-  <h1>Verify your email</h1>
+  <h1><%= t('email.verify') %></h1>
   <%= render "account/shared/verify" %>
 <% end %>
 
+<%= render "account/shared/errors" %>
+
 <%= form_with(url: account_email_path, method: :patch) do |form| %>
-
-  <%= render "account/shared/errors" %>
-
   <div>
-    <%= form.label :email, "New email" %>
+    <%= form.label :email, t('email.new') %>
     <%= form.email_field :email, required: true, autofocus: true %>
   </div>
 
   <div>
-    <%= form.label :current_password %>
+    <%= form.label :current_password, t('label.password') %>
     <%= form.password_field :current_password, required: true, autocomplete: "current-password" %>
   </div>
 
   <div>
-    <%= form.submit "Save changes" %>
+    <%= form.submit t('button.save_changes') %>
   </div>
 <% end %>

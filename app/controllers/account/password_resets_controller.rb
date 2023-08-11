@@ -12,16 +12,16 @@ module Account
     def create
       if (@user = User.find_by(email: params[:email], verified: true))
         send_password_reset_email
-        redirect_to sign_in_path, notice: 'Check your email for reset instructions'
+        redirect_to sign_in_path, notice: t('notice.password.reset.instructions_sent')
       else
-        redirect_to new_account_password_reset_path, alert: "You can't reset your password until you verify your email"
+        redirect_to new_account_password_reset_path, alert: t('alert.password.email_not_verified')
       end
     end
 
     def update
       if @user.update(user_params)
         revoke_tokens
-        redirect_to sign_in_path, notice: 'Your password was reset successfully. Please sign in'
+        redirect_to sign_in_path, notice: t('notice.password.reset.successful')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -33,7 +33,7 @@ module Account
       token = PasswordResetToken.find_signed!(params[:sid])
       @user = token.user
     rescue StandardError
-      redirect_to new_account_password_reset_path, alert: 'That password reset link is invalid'
+      redirect_to new_account_password_reset_path, alert: t('alert.password.reset_link_invalid')
     end
 
     def user_params

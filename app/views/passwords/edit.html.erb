@@ -1,26 +1,24 @@
-<h1>Change your password</h1>
+<h1><%= t('title.passwords.edit') %></h1>
+
+<%= render "account/shared/errors" %>
 
 <%= form_with(url: password_path, method: :patch) do |form| %>
-
-  <%= render "account/shared/errors" %>
-
   <div>
-    <%= form.label :current_password %>
+    <%= form.label :current_password, t('label.password_current') %>
     <%= form.password_field :current_password, required: true, autofocus: true, autocomplete: "current-password" %>
   </div>
 
   <div>
-    <%= form.label :password, "New password" %>
+    <%= form.label :password, t('label.password_new') %>
     <%= form.password_field :password, required: true, autocomplete: "new-password" %>
-    <div>12 characters minimum.</div>
   </div>
 
   <div>
-    <%= form.label :password_confirmation, "Confirm new password" %>
+    <%= form.label :password_confirmation, t('label.password_confirmation') %>
     <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
   </div>
 
   <div>
-    <%= form.submit "Save changes" %>
+    <%= form.submit t('button.save_changes') %>
   </div>
 <% end %>

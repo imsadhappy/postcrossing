@@ -17,6 +17,8 @@
 				"password": "postcrossing"
 			}
 		],
+		"ruby.intellisense": "rubyLocate",
+		"ruby.codeCompletion": "rcodetools",
 		"ruby.rubocop.executePath": "C:/Ruby32-x64/bin/",
 		"ruby.useBundler": true, //run non-lint commands with bundle exec
 		"ruby.useLanguageServer": true, // use the internal language server (see below)
@@ -28,6 +30,15 @@
 				"useBundler": true // enable reek via bundler
 			}
 		},
-		"ruby.format": "rubocop" // use rubocop for formatting,
+		"ruby.format": "rubocop", // use rubocop for formatting,
+        "[ruby]": {
+            "editor.tabSize": 2,
+            "files.eol": "\r\n"
+        },
+        "[erb]": {
+            "editor.tabSize": 4
+        },
+		"editor.insertSpaces": true,
+		"editor.detectIndentation": false
 	}
 }

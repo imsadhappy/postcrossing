@@ -9,7 +9,7 @@
       <% I18n.available_locales.each do |locale| %>
         <% language_name = I18n.t("language_name.#{locale}", locale: locale) %>
         <% if I18n.locale == locale %>
-          <span class="cursor-default"><%= language_name %></span>
+            <span class="cursor-default"><%= language_name %></span>
         <% else %>
           <%= link_to language_name,
               url_for + "?preferred_locale=#{locale}",

@@ -1,12 +1,12 @@
-<h1>Forgot your password?</h1>
+<h1><%= t('notice.password.forgot') %></h1>
 
 <%= form_with(url: account_password_reset_path) do |form| %>
   <div>
-    <%= form.label :email %>
+    <%= form.label :email, t('label.email') %>
     <%= form.email_field :email, required: true, autofocus: true %>
   </div>
 
   <div>
-    <%= form.submit "Send password reset email" %>
+    <%= form.submit t('button.reset_password') %>
   </div>
 <% end %>

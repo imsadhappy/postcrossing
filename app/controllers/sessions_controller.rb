@@ -13,17 +13,16 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
-      @session = user.sessions.create!
-      helpers.session_record @session.id
-      redirect_to account_detail_path, notice: 'Signed in successfully'
+      @session = helpers.create_session(user)
+      redirect_to account_detail_path, notice: t('notice.session_created')
     else
-      redirect_to sign_in_path(email_hint: params[:email]), alert: 'That email or password is incorrect'
+      redirect_to sign_in_path(email_hint: params[:email]), alert: t('alert.invalid_sign_in')
     end
   end
 
   def destroy
     @session.destroy
-    redirect_to account_detail_path, notice: 'Session has been logged out'
+    redirect_to account_detail_path, notice: t('notice.session_destroyed')
   end
 
   private

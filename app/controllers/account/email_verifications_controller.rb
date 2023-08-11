@@ -6,12 +6,12 @@ module Account
 
     def show
       @user.update! verified: true
-      redirect_to account_detail_path, notice: 'Thank you for verifying your email address'
+      redirect_to account_detail_path, notice: t('notice.email_verification.show')
     end
 
     def create
       send_email_verification
-      redirect_to account_detail_path, notice: 'We sent a verification email to your email address'
+      redirect_to account_detail_path, notice: t('notice.email_verification.create')
     end
 
     private
@@ -20,7 +20,7 @@ module Account
       token = EmailVerificationToken.find_signed!(params[:sid])
       @user = token.user
     rescue StandardError
-      redirect_to edit_account_email_path, alert: 'That email verification link is invalid'
+      redirect_to edit_account_email_path, alert: t('notice.email_verification.invalid')
     end
 
     def send_email_verification
