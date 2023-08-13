@@ -1,32 +1,34 @@
 <h1><%= t('hello') %> <%= Current.user.name %></h1>
 
 <% unless Current.user.verified? %>
-  <h2><%= t('email.verify') %></h2>
-  <%= render "account/shared/verify" %>
+    <h2><%= t('email.verify') %></h2>
+    <%= render "account/shared/verify" %>
 <% end %>
 
-<div class="role-<%= Current.user.role %>">
+<%= Current.user.is('admin') %>
 
-  <div>
+<div>
     <%= link_to t('account.details.show.edit.password'), edit_password_path %>
-  </div>
+</div>
 
-  <div>
+<div>
     <%= link_to t('account.details.show.edit.email'), edit_account_email_path %>
-  </div>
+</div>
 
-  <div>
+<div>
     <%= link_to t('account.details.show.devices_sessions'), sessions_path %>
-  </div>
+</div>
 
-  <div>
+<div>
     <%= button_to t('button.sign_out'), Current.session, method: :delete %>
-  </div>
+</div>
 
-  <div>
-    <%= button_to t('account.details.show.delete_my_account'), account_detail_path,
-            method: :delete,
-            data: { confirm: t('alert.confirm'), turbo_confirm: t('alert.confirm') } %>
-  </div>
-
+<div>
+    <%= button_to t('account.details.show.delete_my_account'),
+                    account_detail_path,
+                    method: :delete,
+                    data: {
+                        confirm: t('alert.confirm'),
+                        turbo_confirm: t('alert.confirm')
+                    } %>
 </div>

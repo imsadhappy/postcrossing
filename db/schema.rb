@@ -34,13 +34,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_083853) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.string "password_digest", null: false
-    t.boolean "verified", default: false, null: false
-    t.string "provider"
-    t.string "name", null: false
-    t.string "role", default: "user", null: false
     t.string "uid"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "about"
+    t.string "groups", default: "users", null: false
+    t.string "password_digest", null: false
+    t.string "provider"
+    t.boolean "verified", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
