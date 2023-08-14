@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   private
 
   def use_locale(&)
+    Rails.cache.write('foo', 'bar')
     I18n.with_locale(helpers.current_locale, &)
   end
 
@@ -16,14 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    session_id = cookies.signed[:session_id]
+    session_id = cookies.signed[:uid]
     return unless session_id
 
     session_record = Session.find_by_id(session_id)
     if session_record
       Current.session = session_record
     else
-      cookies.delete :session_id
+      cookies.delete :uid
     end
   end
 

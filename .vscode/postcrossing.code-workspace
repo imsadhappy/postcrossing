@@ -6,17 +6,17 @@
 	],
 	"settings": {
 		"sqltools.connections": [
-			{
-				"previewLimit": 50,
-				"server": "localhost",
-				"port": 5432,
-				"driver": "PostgreSQL",
-				"name": "postcrossing",
-				"database": "postcrossing",
-				"username": "postcrossing",
-				"password": "postcrossing"
-			}
-		],
+            {
+                "previewLimit": 50,
+                "server": "localhost",
+                "port": 5433,
+                "driver": "PostgreSQL",
+                "name": "postcrossing",
+                "database": "postcrossing",
+                "username": "postcrossing",
+                "password": "postcrossing"
+            }
+        ],
 		"ruby.intellisense": "rubyLocate",
 		"ruby.codeCompletion": "rcodetools",
 		"ruby.rubocop.executePath": "C:/Ruby32-x64/bin/",

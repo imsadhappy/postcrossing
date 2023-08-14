@@ -24,6 +24,10 @@ class User < ApplicationRecord
 
   # groups
 
+  def admin?
+    is 'admin'
+  end
+
   def is(group)
     in_group "#{group}s"
   end

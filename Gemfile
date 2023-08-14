@@ -52,6 +52,12 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
 
+group :development, :production do
+  gem 'hiredis'
+
+  gem 'redis'
+end
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'

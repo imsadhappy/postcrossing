@@ -17,7 +17,7 @@ module Account
 
     def destroy
       @user.destroy
-      cookies.delete :session_id
+      cookies.delete :uid
       redirect_to root_path, notice: t('notice.account_deleted')
     end
 

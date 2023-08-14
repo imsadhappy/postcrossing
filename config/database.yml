@@ -26,6 +26,7 @@ development:
   database: <%= Rails.application.credentials.config[:database][:name] %>
   username: <%= Rails.application.credentials.config[:database][:user] %>
   password: <%= Rails.application.credentials.config[:database][:password] %>
+  port: <%= Rails.application.credentials.config[:database][:port] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,6 +63,7 @@ test:
   database: <%= Rails.application.credentials.config[:database][:name] %>
   username: <%= Rails.application.credentials.config[:database][:user] %>
   password: <%= Rails.application.credentials.config[:database][:password] %>
+  port: <%= Rails.application.credentials.config[:database][:port] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -88,3 +90,4 @@ production:
   database: <%= Rails.application.credentials.config[:database][:name] %>
   username: <%= Rails.application.credentials.config[:database][:user] %>
   password: <%= Rails.application.credentials.config[:database][:password] %>
+  port: <%= Rails.application.credentials.config[:database][:port] %>

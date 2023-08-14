@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def create_session(user)
     session = user.sessions.create!
-    cookies.signed.permanent[:session_id] = { value: session.id, httponly: true }
+    cookies.signed.permanent[:uid] = { value: session.id, httponly: true }
     session
   end
 end
