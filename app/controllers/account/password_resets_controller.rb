@@ -11,7 +11,7 @@ module Account
 
     def create
       if (@user = User.find_by(email: params[:email], verified: true))
-        send_password_reset_email
+        UserMailer.with(user: @user).password_reset.deliver_later
         redirect_to sign_in_path, notice: t('notice.password.reset.instructions_sent')
       else
         redirect_to new_account_password_reset_path, alert: t('alert.password.email_not_verified')
@@ -38,10 +38,6 @@ module Account
 
     def user_params
       params.permit(:password, :password_confirmation)
-    end
-
-    def send_password_reset_email
-      UserMailer.with(user: @user).password_reset.deliver_later
     end
 
     def revoke_tokens

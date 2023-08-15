@@ -10,7 +10,7 @@ module Account
     end
 
     def create
-      send_email_verification
+      UserMailer.with(user: Current.user).email_verification.deliver_later
       redirect_to account_detail_path, notice: t('notice.email_verification.create')
     end
 
@@ -21,10 +21,6 @@ module Account
       @user = token.user
     rescue StandardError
       redirect_to edit_account_email_path, alert: t('notice.email_verification.invalid')
-    end
-
-    def send_email_verification
-      UserMailer.with(user: Current.user).email_verification.deliver_later
     end
   end
 end

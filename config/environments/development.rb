@@ -25,11 +25,8 @@ Rails.application.configure do
 
     config.action_controller.enable_fragment_cache_logging = true
 
-    # config.cache_store = :memory_store
-
-    config.cache_store = :redis_cache_store, {
-      url: 'redis://localhost:6379/0'
-    }
+    config.cache_store = :memory_store
+    # config.cache_store = :redis_cache_store, { url: 'redis://localhost:8001' }
 
     config.session_store :cache_store, key: 'sid'
 

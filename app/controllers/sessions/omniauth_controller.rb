@@ -5,18 +5,17 @@ module Sessions
     skip_before_action :authenticate
 
     def create
-      @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
-
-      if @user.save
-        helpers.create_session(@user)
-        redirect_to account_detail_path, notice: t('notice.session_created')
+      if User.exists?(email: user_params[:email])
+        redirect_to sign_in_path, alert: t('alert.already_registered')
       else
-        redirect_to sign_in_path, alert: t('alert.auth_failed')
+        @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
+        if @user.save
+          helpers.create_session(@user)
+          redirect_to account_detail_path, notice: t('notice.session_created')
+        else
+          redirect_to sign_in_path, alert: t('alert.auth_failed')
+        end
       end
-    end
-
-    def failure
-      redirect_to sign_in_path, alert: params[:message]
     end
 
     private

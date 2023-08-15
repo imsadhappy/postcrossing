@@ -8,10 +8,9 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       helpers.create_session(@user)
-      send_email_verification
+      UserMailer.with(user: @user).email_verification.deliver_later
       redirect_to account_detail_path, notice: t('notice.registration_successful')
     else
       render :new, status: :unprocessable_entity
@@ -22,9 +21,5 @@ class RegistrationsController < ApplicationController
 
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def send_email_verification
-    UserMailer.with(user: @user).email_verification.deliver_later
   end
 end

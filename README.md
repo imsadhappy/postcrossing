@@ -1,8 +1,11 @@
 # README
 
-* install gems: `bundle install`
+* install gems: `bundle install` (install solargraph & rubocop for development)
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
+
+Version 0.2.0
+- user about
 
 Version 0.1.6
 - caching setup

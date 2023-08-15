@@ -1,16 +1,22 @@
 <h1><%= t('hello') %> <%= Current.user.name %></h1>
 
+<div><%=raw Current.user.about&.gsub "\n", '<br>' %></div>
+
 <% unless Current.user.verified? %>
     <h2><%= t('email.verify') %></h2>
     <%= render "account/shared/verify" %>
 <% end %>
 
 <div>
-    <%= link_to t('account.details.show.edit.password'), edit_password_path %>
+    <%= link_to t('account.details.show.about_me'), edit_account_detail_path %>
 </div>
 
 <div>
-    <%= link_to t('account.details.show.edit.email'), edit_account_email_path %>
+    <%= link_to t('account.details.show.my_password'), edit_password_path %>
+</div>
+
+<div>
+    <%= link_to t('account.details.show.my_email'), edit_account_email_path %>
 </div>
 
 <div>

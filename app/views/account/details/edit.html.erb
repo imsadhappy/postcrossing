@@ -1,3 +1,13 @@
-<% if Current.user %>
+<h1><%= t('title.details.edit') %></h1>
 
+<%= render "account/shared/errors" %>
+
+<%= form_with(url: account_detail_path, method: :patch) do |form| %>
+  <div>
+    <%= form.text_area :about, autofocus: true, value: strip_tags(Current.user.about) %>
+  </div>
+
+  <div>
+    <%= form.submit t('button.save_changes') %>
+  </div>
 <% end %>

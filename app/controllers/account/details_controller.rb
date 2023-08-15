@@ -8,8 +8,8 @@ module Account
     def edit; end
 
     def update
-      if @user.update(email: params[:email])
-        redirect_to_root
+      if @user.update(about: strip_tags(params[:about]))
+        redirect_to account_detail_path, notice: t('notice.changes_saved')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -22,6 +22,10 @@ module Account
     end
 
     private
+
+    def strip_tags(string)
+      ActionView::Base.full_sanitizer.sanitize(string)
+    end
 
     def set_user
       @user = Current.user

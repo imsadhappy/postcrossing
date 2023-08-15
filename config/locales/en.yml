@@ -27,6 +27,7 @@ en:
       edit: "Reset password"
       new: "Reset password"
     details:
+      edit: "Change my account details"
       show: "My account"
     emails:
       edit: "Change your email"
@@ -42,9 +43,9 @@ en:
     sign_in_with: "Sign in with"
     details:
       show:
-        edit:
-          password: "Change password"
-          email: "Change email address"
+        about_me: "About me"
+        my_password: "My password"
+        my_email: "My email address"
         devices_sessions: "Devices & sessions"
         delete_my_account: "Delete my account"
     session:
@@ -69,12 +70,13 @@ en:
       click_required: "You need to click the link below to confirm your email in system."
     need_help: "Have questions or need help? Just reply to this email and our support team will help you sort it out."
   notice:
+    changes_saved: "Changes saved"
     registration_successful: 'Welcome! You have signed up successfully'
     session_created: 'Signed in successfully'
     session_destroyed: 'Session has been logged out'
     email_changed: 'Your email has been changed'
     email_verification:
-      pending: "We sent a verification email to the address below. Check that email and follow those instructions to confirm it's your email address."
+      pending: "We sent a verification email to your address. Check your email and follow instructions to confirm it."
       resend: "Re-send"
       show: 'Thank you for verifying your email address'
       create: 'We sent a verification email to your email address'
@@ -87,6 +89,7 @@ en:
         instructions_sent: 'Check your email for reset instructions'
         successful: 'Your password was reset successfully. Please sign in'
   alert:
+    already_registered: 'Email already registered. Please sign in using password'
     auth_failed: 'Authentication failed'
     invalid_sign_in: 'Email or password is incorrect'
     confirm: "Are you sure?"

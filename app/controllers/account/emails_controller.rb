@@ -9,7 +9,7 @@ module Account
       if !@user.authenticate(params[:current_password])
         redirect_to edit_account_email_path, alert: t('alert.password.incorrect')
       elsif @user.update(email: params[:email])
-        redirect_to_root
+        redirect_on_update
       else
         render :edit, status: :unprocessable_entity
       end
@@ -22,17 +22,13 @@ module Account
       redirect_to sign_in_path unless @user
     end
 
-    def redirect_to_root
+    def redirect_on_update
+      notice = t('notice.email_changed')
       if @user.email_previously_changed?
-        resend_email_verification
-        redirect_to account_detail_path, notice: t('notice.email_changed')
-      else
-        redirect_to account_detail_path
+        UserMailer.with(user: @user).email_verification.deliver_later
+        notice += ' ' + t('notice.email_verification.pending')
       end
-    end
-
-    def resend_email_verification
-      UserMailer.with(user: @user).email_verification.deliver_later
+      redirect_to account_detail_path, notice:
     end
   end
 end
