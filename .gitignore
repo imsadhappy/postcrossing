@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+/.ruby-lsp
+/.vscode
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -26,6 +28,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/vendor/bundle
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -36,3 +39,7 @@
 .solargraph.yml
 .rubocop.yml
 Gemfile.lock
+
+/config/credentials/development.key
+
+/config/credentials/production.key

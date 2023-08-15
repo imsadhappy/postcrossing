@@ -10,39 +10,8 @@
 * files in this directory. Styles in this file should be added after the last require_* statement.
 * It is generally better to create a new file per style scope.
 *
-*= require_tree .
+*= require normalize
+*= require fonts
+*= require layout
 *= require_self
 */
-
-html, body {
-  height: 100%;
-}
-
-.site {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-header {
-  flex-shrink: 0;
-  padding: 1rem 0;
-}
-
-main {
-  flex: 1 0 auto;
-  padding: 1rem 0;
-}
-
-footer {
-  padding: 1rem 0;
-  flex-shrink: 0;
-  color: white;
-  background-color: black;
-}
-
-.wrapper {
-  margin: 0 auto;
-  width: calc(100vw - 40px);
-  max-width: 1240px;
-}

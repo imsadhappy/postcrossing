@@ -1,0 +1,25 @@
+<h1><%= t('title.sessions.index') %></h1>
+
+<div id="sessions">
+  <% @sessions.each do |session| %>
+    <div id="<%= dom_id session %>">
+      <p>
+        <strong><%= t('account.session.user_agent') %>:</strong>
+        <%= session.user_agent %>
+      </p>
+
+      <p>
+        <strong><%= t('account.session.ip_address') %>:</strong>
+        <%= session.ip_address %>
+      </p>
+
+      <p>
+        <strong><%= t('account.session.created_at') %>:</strong>
+        <%= session.created_at %>
+      </p>
+    </div>
+    <p>
+      <%= button_to t('button.sign_out'), session, method: :delete %>
+    </p>
+  <% end %>
+</div>

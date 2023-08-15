@@ -26,15 +26,6 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem 'kredis'
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem 'bcrypt', '~> 3.1.7'
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
@@ -46,6 +37,14 @@ gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
+
+# Use Redis adapter to run Action Cable in production
+gem 'redis', '~> 4.0'
+
+gem 'hiredis'
+
+# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
+gem 'kredis'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -70,8 +69,19 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'devise', '~> 4.9'
-
 gem 'tailwindcss-rails', '~> 2.0'
 
-gem 'route_translator'
+gem 'authentication-zero', '~> 2.16'
+
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'bcrypt', '~> 3.1.7'
+
+# Use OmniAuth to support multi-provider authentication [https://github.com/omniauth/omniauth]
+gem 'omniauth'
+
+# Provides a mitigation against CVE-2015-9284 [https://github.com/cookpad/omniauth-rails_csrf_protection]
+gem 'omniauth-rails_csrf_protection'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth-google-oauth2'

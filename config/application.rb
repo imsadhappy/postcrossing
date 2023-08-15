@@ -5,9 +5,9 @@ require 'rails/all'
 # youve limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# PostCrossing
+# config/application.rb
 module PostCrossing
-  # Application
+  # PostCrossing Application
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
