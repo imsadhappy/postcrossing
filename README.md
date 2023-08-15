@@ -5,6 +5,9 @@
 * run tailwind watcher: `rails tailwindcss:watch`
 
 Version 0.2.0
+- user menu
+
+Version 0.2.0
 - user about
 
 Version 0.1.6

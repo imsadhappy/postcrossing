@@ -1,0 +1,15 @@
+<menu>
+
+    <% links = [{text: 'about_me', url: edit_account_detail_path },
+                {text: 'my_password', url: edit_password_path },
+                {text: 'my_email', url: edit_account_email_path },
+                {text: 'devices_sessions', url: sessions_path }]
+        links.each do |link| %>
+
+        <li>
+            <%= link_to t('account.details.show.'+link[:text]), link[:url], class: current_page?(link[:url]) ? 'active' : '' %>
+        </li>
+
+    <% end %>
+
+</menu>
