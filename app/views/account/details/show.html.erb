@@ -5,10 +5,6 @@
     <%= render "account/shared/verify" %>
 <% end %>
 
-<%= Current.user.admin? %>
-
-<%= Rails.cache.read('foo') %>
-
 <div>
     <%= link_to t('account.details.show.edit.password'), edit_password_path %>
 </div>

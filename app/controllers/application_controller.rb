@@ -1,14 +1,13 @@
 # app/controllers/application_controller.rb
 class ApplicationController < ActionController::Base
-  before_action :set_current_details
+  before_action :set_current
   before_action :authenticate
   before_action :set_locale
-  around_action :use_locale
+  around_action :localize
 
   private
 
-  def use_locale(&)
-    Rails.cache.write('foo', 'bar')
+  def localize(&)
     I18n.with_locale(helpers.current_locale, &)
   end
 
@@ -28,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_current_details
+  def set_current
     Current.user_agent = request.user_agent
     Current.ip_address = request.ip
   end

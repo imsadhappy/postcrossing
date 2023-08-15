@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_083853) do
     t.string "uid"
     t.string "name", null: false
     t.string "email", null: false
-    t.string "about"
+    t.text "about"
     t.string "groups", default: "users", null: false
     t.string "password_digest", null: false
     t.string "provider"

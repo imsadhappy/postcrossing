@@ -59,7 +59,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   config.cache_store = :redis_cache_store, {
-    url: 'redis://localhost:6379/1'
+    url: 'redis://localhost:6379/0'
   }
 
   config.session_store :cache_store, key: 'sid'
