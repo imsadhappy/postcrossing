@@ -30,7 +30,7 @@ en:
       edit: "Change my account details"
       show: "My account"
     emails:
-      edit: "Change your email"
+      edit: "Change email"
   header:
     home: "Home"
     sign_in: "Sign in"
@@ -42,10 +42,10 @@ en:
   account:
     sign_in_with: "Sign in with"
     details:
-      show:
+      menu:
         about_me: "About me"
-        my_password: "My password"
-        my_email: "My email address"
+        my_password: "Change password"
+        my_email: "Change email"
         devices_sessions: "Devices & sessions"
         delete_my_account: "Delete my account"
     session:

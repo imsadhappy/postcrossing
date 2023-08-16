@@ -42,10 +42,10 @@ uk:
   account:
     sign_in_with: "Увійти за допомогою"
     details:
-      show:
+      menu:
         about_me: "Про мене"
-        my_password: "Мій пароль"
-        my_email: "Моя електронна пошта"
+        my_password: "Змінити пароль"
+        my_email: "Змінити електронну пошта"
         devices_sessions: "Пристрої та сеанси"
         delete_my_account: "Видалити мій обліковий запис"
     session:

@@ -9,13 +9,8 @@
 
 <div><%=raw Current.user.about&.gsub "\n", '<br>' %></div>
 
-
 <div>
-    <%= button_to t('button.sign_out'), Current.session, method: :delete %>
-</div>
-
-<div>
-    <%= button_to t('account.details.show.delete_my_account'),
+    <%= button_to t('account.details.menu.delete_my_account'),
                     account_detail_path,
                     method: :delete,
                     data: {

@@ -4,6 +4,9 @@
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
+Version 0.2.1
+- minor styling
+
 Version 0.2.0
 - user menu
 

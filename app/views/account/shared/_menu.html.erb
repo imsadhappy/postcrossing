@@ -7,9 +7,11 @@
         links.each do |link| %>
 
         <li>
-            <%= link_to t('account.details.show.'+link[:text]), link[:url], class: current_page?(link[:url]) ? 'active' : '' %>
+            <%= link_to t('account.details.menu.'+link[:text]), link[:url], class: current_page?(link[:url]) ? 'active' : '' %>
         </li>
 
     <% end %>
+
+    <li><%= button_to t('button.sign_out'), Current.session, method: :delete %></li>
 
 </menu>
