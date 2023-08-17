@@ -10,6 +10,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       helpers.create_session(@user)
+      Stats::Registrations.record
       UserMailer.with(user: @user).email_verification.deliver_later
       redirect_to account_detail_path, notice: t('notice.registration_successful')
     else

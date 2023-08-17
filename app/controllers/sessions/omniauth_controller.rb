@@ -11,6 +11,7 @@ module Sessions
         @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
         if @user.save
           helpers.create_session(@user)
+          Stats::Registrations.record
           redirect_to account_detail_path, notice: t('notice.session_created')
         else
           redirect_to sign_in_path, alert: t('alert.auth_failed')
