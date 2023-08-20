@@ -4,6 +4,9 @@
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
+Version 0.3.1
+- stats for registrations, visits, pageviews & newsreads
+
 Version 0.3.0
 - stats
 

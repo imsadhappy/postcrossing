@@ -1,6 +1,12 @@
-# app/models/stats/registrations.rb
 module Stats
-  class Registrations < Base
-    RECORD_TYPE = 'registrations'.freeze
+  # app/models/stats/registrations.rb
+  class Registrations < Record
+    self.table_name = 'user_stats'
+
+    @record_type = 'registrations'
+
+    class << self
+      public :record
+    end
   end
 end
