@@ -20,11 +20,14 @@ module Stats
 
       def for_range(start_day, end_day = nil)
         record_type_check
+
         q = 'record_start >= ? AND record_end <= ? AND record_type = ?'
         records = where(q, start_day.to_date.beginning_of_day,
                         (end_day || start_day).to_date.end_of_day,
                         @record_type).pluck(:record_count)
+
         after_query if methods.include?(:after_query)
+
         records.sum
       end
 
@@ -32,10 +35,13 @@ module Stats
 
       def record(day = Date.current)
         record_type_check
+
         record = find_or_create_by!(record_args(day))
         record.record_count += 1
         record.save
-        after_query if methods.include?(:after_query)
+
+        after_record if methods.include?(:after_record)
+
         record.record_count
       end
 

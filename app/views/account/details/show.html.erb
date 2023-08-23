@@ -9,6 +9,14 @@
 
 <div><%=raw Current.user.about&.gsub "\n", '<br>' %></div>
 
+<div><%= t('account.details.last_seen') %>:
+    <% if Current.user.last_seen == Date.today %>
+        <%= t('date.today') %>
+    <% else %>
+        <%= time_ago_in_words Current.user.last_seen %> <%= t('date.ago') %>
+    <% end %>
+</div>
+
 <div>
     <%= button_to t('account.details.menu.delete_my_account'),
                     account_detail_path,

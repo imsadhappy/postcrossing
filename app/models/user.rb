@@ -20,11 +20,20 @@ class User < ApplicationRecord
     self.verified = false
   end
 
-  after_update if: :password_digest_previously_changed? do
-    sessions.where.not(id: Current.session).delete_all
+  before_validation if: :last_seen_changed?, on: :update do
+    Stats::Visits.record
   end
 
-  after_create_commit do
+  before_create do
+    self.last_seen = DateTime.now
+  end
+
+  after_create do
+    Stats::Visits.record
     Stats::Registrations.record
+  end
+
+  after_update if: :password_digest_previously_changed? do
+    sessions.where.not(id: Current.session).delete_all
   end
 end

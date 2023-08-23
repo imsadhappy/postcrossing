@@ -12,5 +12,6 @@ class ApplicationController < ActionController::Base
     Current.session = @session if @session
     Current.user_agent = request.user_agent
     Current.ip_address = request.ip
+    daily_visit
   end
 end

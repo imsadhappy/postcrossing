@@ -18,9 +18,9 @@ module LocaleManager
   private
 
   def current_locale
-    hlocale = cookies[:hl]
+    cookie_locale = cookies[:postcrossing_locale]
     locale = params[:locale] || I18n.default_locale
-    hlocale && hlocale != locale.to_s ? hlocale : locale
+    cookie_locale && cookie_locale != locale.to_s ? cookie_locale : locale
   end
 
   def update_locale
@@ -28,9 +28,9 @@ module LocaleManager
     return false unless locale
 
     if locale == I18n.default_locale.to_s
-      cookies.delete :hl
+      cookies.delete :postcrossing_locale
     else
-      cookies.permanent[:hl] = locale
+      cookies.permanent[:postcrossing_locale] = locale
     end
     locale
   end

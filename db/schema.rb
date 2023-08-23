@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_071110) do
     t.string "email", null: false
     t.text "about"
     t.string "groups", default: "users", null: false
+    t.date "last_seen", null: false
     t.string "password_digest", null: false
     t.string "provider"
     t.boolean "verified", default: false, null: false

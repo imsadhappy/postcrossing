@@ -28,7 +28,7 @@ Rails.application.configure do
     config.cache_store = :memory_store
     # config.cache_store = :redis_cache_store, { url: 'redis://localhost:8001' }
 
-    config.session_store :cache_store, key: 'sid'
+    config.session_store :cache_store, key: 'postcrossing_session'
 
     config.public_file_server.headers = {
       'Cache-Control' => "public, max-age=#{2.days.to_i}"

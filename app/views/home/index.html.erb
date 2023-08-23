@@ -1,1 +1,10 @@
-
+<div id="stats">
+    <div id="registrations">
+        <%= @stats[:registrations][:today] %>
+        <%= @stats[:registrations][:this_month] %>
+    </div>
+    <div id="visits">
+        <%= @stats[:visits][:today] %>
+        <%= @stats[:visits][:this_month] %>
+    </div>
+</div>
