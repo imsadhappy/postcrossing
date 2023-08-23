@@ -1,5 +1,7 @@
 # app/models/user.rb
 class User < ApplicationRecord
+  include UserGroups
+
   has_secure_password
 
   has_many :email_verification_tokens, dependent: :destroy
@@ -22,37 +24,7 @@ class User < ApplicationRecord
     sessions.where.not(id: Current.session).delete_all
   end
 
-  # groups
-
-  def admin?
-    is 'admin'
-  end
-
-  def is(group)
-    in_group "#{group}s"
-  end
-
-  def in_group(group)
-    groups.split(',').include? group.to_s.downcase
-  end
-
-  def add_to(group)
-    group = group.to_s.downcase
-    return false if in_group group
-
-    self.groups += ",#{group}"
-    save
-  end
-
-  def remove_from(group)
-    group = group.to_s.downcase
-    return false if group == 'users'
-
-    groups = self.groups.split(',')
-    return false unless groups.include? group
-
-    groups.delete(group)
-    self.groups = groups.join(',')
-    save
+  after_create_commit do
+    Stats::Registrations.record
   end
 end

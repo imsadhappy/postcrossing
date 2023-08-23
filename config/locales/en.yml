@@ -52,6 +52,8 @@ en:
       user_agent: "User Agent"
       ip_address: "IP Address"
       created_at: "Created at"
+      this_user_agent: "This User Agent"
+      this_ip_address: "This IP Address"
   email:
     verify: "Verify your email"
     new: "New email"
@@ -73,7 +75,7 @@ en:
     changes_saved: "Changes saved"
     registration_successful: 'Welcome! You have signed up successfully'
     session_created: 'Signed in successfully'
-    session_destroyed: 'Session has been logged out'
+    session_destroyed: 'Device session ended'
     email_changed: 'Your email has been changed'
     email_verification:
       pending: "We sent a verification email to your address. Check your email and follow instructions to confirm it."

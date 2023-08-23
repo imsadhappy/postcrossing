@@ -20,7 +20,7 @@ module Account
 
     def update
       if @user.update(user_params)
-        revoke_tokens
+        @user.password_reset_tokens.delete_all
         redirect_to sign_in_path, notice: t('notice.password.reset.successful')
       else
         render :edit, status: :unprocessable_entity
@@ -38,10 +38,6 @@ module Account
 
     def user_params
       params.permit(:password, :password_confirmation)
-    end
-
-    def revoke_tokens
-      @user.password_reset_tokens.delete_all
     end
   end
 end
