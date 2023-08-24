@@ -6,7 +6,7 @@
 
 <%= form_with(url: account_detail_path, method: :patch) do |form| %>
   <div>
-    <%= form.text_area :about, autofocus: true, value: strip_tags(Current.user.about) %>
+    <%= form.text_area :about, autofocus: true, value: strip_tags(@user.about) %>
   </div>
 
   <div>

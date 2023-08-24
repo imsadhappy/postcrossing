@@ -1,19 +1,19 @@
 <%= render "account/shared/menu" %>
 
-<% unless Current.user.verified? %>
+<% unless @user.verified? %>
     <h2><%= t('email.verify') %></h2>
     <%= render "account/shared/verify" %>
 <% end %>
 
-<h1><%= t('hello') %> <%= Current.user.name %></h1>
+<h1><%= t('hello') %> <%= @user.name %></h1>
 
-<div><%=raw Current.user.about&.gsub "\n", '<br>' %></div>
+<div><%=raw @user.about&.gsub "\n", '<br>' %></div>
 
 <div><%= t('account.details.last_seen') %>:
-    <% if Current.user.last_seen == Date.today %>
+    <% if @user.last_seen == Date.today %>
         <%= t('date.today') %>
     <% else %>
-        <%= time_ago_in_words Current.user.last_seen %> <%= t('date.ago') %>
+        <%= time_ago_in_words @user.last_seen %> <%= t('date.ago') %>
     <% end %>
 </div>
 

@@ -18,7 +18,7 @@ uk:
       index: "Головна"
     sessions:
       new: "Вхід"
-      index: "Пристрої та сеанси"
+      index: "Браузери та сеанси"
     registrations:
       new: "Реєстрація"
     passwords:
@@ -46,14 +46,14 @@ uk:
         about_me: "Про мене"
         my_password: "Змінити пароль"
         my_email: "Змінити електронну пошта"
-        devices_sessions: "Пристрої та сеанси"
+        browser_sessions: "Браузеры та сеанси"
         delete_my_account: "Видалити мій обліковий запис"
       last_seen: "Востаннє онлайн"
     session:
-      user_agent: "Пристрій"
+      user_agent: "Браузер"
       ip_address: "IP адреса"
-      created_at: "Створена"
-      this_user_agent: "Цей пристрій"
+      created_at: "Створено"
+      this_user_agent: "Цей браузер"
       this_ip_address: "Ця IP адреса"
   email:
     verify: "Підтвердьте свою електронну пошту"
@@ -76,7 +76,7 @@ uk:
     changes_saved: "Зміни збережено"
     registration_successful: 'Ласкаво просимо! Ви успішно зареєструвалися'
     session_created: 'Ви успішно увійшли до системи'
-    session_destroyed: 'Сеанс на цьому пристрої завершено'
+    session_destroyed: 'Сеанс у цьому браузері завершено'
     email_changed: 'Вашу електронну пошту змінено'
     email_verification:
       pending: "Ми надіслали листа із підтвердженням на вашу електронну пошту. Перевірте цей лист і перейдіть за посиланням в ньому, щоб підтвердити справжність вашої електронної пошти."
@@ -96,10 +96,10 @@ uk:
     auth_failed: 'Помилка автентифікації'
     invalid_sign_in: 'Невірна електронна пошта або пароль'
     confirm: "Ви впевнені?"
-    pasword:
+    password:
       incorrect: 'Введений пароль невірний'
       current_incorrect: 'Введений старий пароль невірний'
-      email_not_verified: "Ви не можете змінити свій пароль, доки не підтвердите свою електронну пошту"
+      email_not_registered: "Ця електронна пошта не зареєстрована"
       reset_link_invalid: 'Це посилання для скидання пароля недійсне'
   date:
     ago: "тому"

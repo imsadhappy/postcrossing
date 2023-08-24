@@ -18,7 +18,7 @@ en:
       index: "Home"
     sessions:
       new: "Sign in"
-      index: "Devices & sessions"
+      index: "Browsers & sessions"
     registrations:
       new: "Sign up"
     passwords:
@@ -46,7 +46,7 @@ en:
         about_me: "About me"
         my_password: "Change password"
         my_email: "Change email"
-        devices_sessions: "Devices & sessions"
+        browser_sessions: "Browsers & sessions"
         delete_my_account: "Delete my account"
       last_seen: "Last seen online"
     session:
@@ -76,7 +76,7 @@ en:
     changes_saved: "Changes saved"
     registration_successful: 'Welcome! You have signed up successfully'
     session_created: 'Signed in successfully'
-    session_destroyed: 'Device session ended'
+    session_destroyed: 'Browser session ended'
     email_changed: 'Your email has been changed'
     email_verification:
       pending: "We sent a verification email to your address. Check your email and follow instructions to confirm it."
@@ -96,10 +96,10 @@ en:
     auth_failed: 'Authentication failed'
     invalid_sign_in: 'Email or password is incorrect'
     confirm: "Are you sure?"
-    pasword:
+    password:
       incorrect: 'The password you entered is incorrect'
       current_incorrect: 'The current password you entered is incorrect'
-      email_not_verified: "You can't reset your password until you verify your email"
+      email_not_registered: "Email is not registered"
       reset_link_invalid: 'That password reset link is invalid'
   date:
     ago: "ago"

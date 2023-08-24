@@ -1,20 +1,21 @@
 module Account
   # app/controllers/user/password_resets_controller.rb
   class PasswordResetsController < ApplicationController
-    skip_before_action :authenticate
+    include SessionManager
 
-    before_action :set_user, only: %i[edit update]
+    before_action :check_session
+    before_action :set_user_via_token, only: %i[edit update]
 
     def new; end
 
     def edit; end
 
     def create
-      if (@user = User.find_by(email: params[:email], verified: true))
+      if (@user = User.find_by(email: params[:email]))
         UserMailer.with(user: @user).password_reset.deliver_later
         redirect_to sign_in_path, notice: t('notice.password.reset.instructions_sent')
       else
-        redirect_to new_account_password_reset_path, alert: t('alert.password.email_not_verified')
+        redirect_to new_account_password_reset_path, alert: t('alert.password.email_not_registered')
       end
     end
 
@@ -29,7 +30,11 @@ module Account
 
     private
 
-    def set_user
+    def check_session
+      redirect_to account_detail_path if @session
+    end
+
+    def set_user_via_token
       token = PasswordResetToken.find_signed!(params[:sid])
       @user = token.user
     rescue StandardError

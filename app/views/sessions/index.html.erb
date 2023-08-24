@@ -3,16 +3,15 @@
 <h1><%= t('title.sessions.index') %></h1>
 
 <div id="sessions">
-  <% @sessions.each do |session|
-        current_session = session.id == Current.session.id %>
+  <% @session_list.each do |session| %>
     <div id="<%= dom_id session %>">
       <p>
-        <strong><%= t("account.session.#{current_session ? 'this_':''}user_agent") %>:</strong>
+        <strong><%= t("account.session.#{session.id == @session.id ? 'this_':''}user_agent") %>:</strong>
         <%= session.user_agent %>
       </p>
 
       <p>
-        <strong><%= t("account.session.#{current_session ? 'this_':''}ip_address") %>:</strong>
+        <strong><%= t("account.session.#{session.id == @session.id ? 'this_':''}ip_address") %>:</strong>
         <%= session.ip_address %>
       </p>
 

@@ -4,10 +4,10 @@ module LocaleManager
 
   included do
     before_action :change_locale
-    around_action :localize
+    around_action :set_locale
   end
 
-  def localize(&)
+  def set_locale(&)
     I18n.with_locale(current_locale, &)
   end
 

@@ -17,6 +17,10 @@ module Account
 
     private
 
+    def check_user
+      redirect_to sign_in_path unless @user
+    end
+
     def redirect_on_update
       notice = t('notice.email_changed')
       if @user.email_previously_changed?

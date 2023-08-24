@@ -2,13 +2,25 @@
 module SessionManager
   extend ActiveSupport::Concern
 
-  def current_session
+  included do
+    before_action :set_request
+    before_action :set_session
+  end
+
+  def set_request
+    Current.user_agent = request.user_agent
+    Current.ip_address = request.ip
+  end
+
+  def set_session
     @session = Session.find_by_id(cookies.signed[:postcrossing_user])
+    Current.session = @session
     end_session unless @session
   end
 
-  def start_session
-    @session = @user.sessions.create!
+  def start_session(user)
+    @session = user.sessions.create!
+    Current.session = @session
     cookies.signed.permanent[:postcrossing_user] = {
       value: @session.id,
       httponly: true
@@ -17,19 +29,5 @@ module SessionManager
 
   def end_session
     cookies.delete :postcrossing_user
-  end
-
-  def daily_visit
-    return unless @session
-    return if cookies[:postcrossing_visit]
-
-    today = Date.today
-    Current.user.update(last_seen: today) unless Current.user.last_seen == today
-
-    cookies.signed[:postcrossing_visit] = {
-      value: today.to_time(:utc),
-      httponly: true,
-      expires: Date.tomorrow.to_time(:utc)
-    }
   end
 end

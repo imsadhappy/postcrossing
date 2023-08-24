@@ -4,12 +4,11 @@ module Sessions
     include SessionManager
 
     skip_before_action :verify_authenticity_token
-    skip_before_action :authenticate
 
     def create
       @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
       if @user.save
-        start_session
+        start_session(@user)
         redirect_to account_detail_path, notice: t('notice.session_created')
       else
         redirect_to sign_in_path, alert: t('alert.auth_failed')

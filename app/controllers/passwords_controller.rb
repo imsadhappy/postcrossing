@@ -2,6 +2,8 @@
 class PasswordsController < ApplicationController
   include UserManager
 
+  before_action :check_user
+
   def edit; end
 
   def update
@@ -15,6 +17,10 @@ class PasswordsController < ApplicationController
   end
 
   private
+
+  def check_user
+    redirect_to sign_in_path unless @user
+  end
 
   def user_params
     params.permit(:password, :password_confirmation)

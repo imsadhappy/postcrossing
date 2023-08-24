@@ -1,6 +1,6 @@
 <%= render "account/shared/menu" %>
 
-<% if Current.user.verified? %>
+<% if @user.verified? %>
   <h1><%= t('title.emails.edit') %></h1>
 <% else %>
   <h1><%= t('email.verify') %></h1>

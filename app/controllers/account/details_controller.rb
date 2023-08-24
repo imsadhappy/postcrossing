@@ -1,8 +1,9 @@
 module Account
   # app/controllers/user/details_controller.rb
   class DetailsController < ApplicationController
-    include SessionManager
     include UserManager
+
+    before_action :check_user
 
     def show; end
 
@@ -23,6 +24,10 @@ module Account
     end
 
     private
+
+    def check_user
+      redirect_to sign_in_path unless @user
+    end
 
     def strip_tags(string)
       ActionView::Base.full_sanitizer.sanitize(string)
