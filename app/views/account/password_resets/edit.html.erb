@@ -6,14 +6,14 @@
 
   <%= form.hidden_field :sid, value: params[:sid] %>
 
-  <div>
+  <div class="field">
+    <%= form.password_field :password, required: true, autocomplete: "new-password" %>
     <%= form.label :password, t('label.password_new') %>
-    <%= form.password_field :password, required: true, autofocus: true, autocomplete: "new-password" %>
   </div>
 
-  <div>
-    <%= form.label :password_confirmation, t('label.password_confirmation') %>
+  <div class="field">
     <%= form.password_field :password_confirmation, required: true, autocomplete: "new-password" %>
+    <%= form.label :password_confirmation, t('label.password_confirmation') %>
   </div>
 
   <div>

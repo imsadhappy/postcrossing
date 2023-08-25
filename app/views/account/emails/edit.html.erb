@@ -10,14 +10,14 @@
 <%= render "account/shared/errors" %>
 
 <%= form_with(url: account_email_path, method: :patch) do |form| %>
-  <div>
+  <div class="field">
+    <%= form.email_field :email, required: true %>
     <%= form.label :email, t('email.new') %>
-    <%= form.email_field :email, required: true, autofocus: true %>
   </div>
 
-  <div>
-    <%= form.label :current_password, t('label.password') %>
+  <div class="field">
     <%= form.password_field :current_password, required: true, autocomplete: "current-password" %>
+    <%= form.label :current_password, t('label.password_current') %>
   </div>
 
   <div>

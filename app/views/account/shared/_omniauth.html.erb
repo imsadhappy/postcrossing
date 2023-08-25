@@ -1,11 +1,6 @@
 <div>
-  <%= button_to t('account.sign_in_with')+" Facebook", "/auth/facebook", "data-turbo" => false %>
-</div>
-
-<div>
-  <%= button_to t('account.sign_in_with')+" Google", "/auth/google_oauth2", "data-turbo" => false %>
-</div>
-
-<div>
-  <%= button_to t('account.sign_in_with')+" OmniAuth", "/auth/developer", "data-turbo" => false %>
+  <%= t('account.sign_in_with') %>:
+  <%= button_to "Facebook", "/auth/facebook", "data-turbo" => false %>
+  | <%= button_to "Google", "/auth/google_oauth2", "data-turbo" => false %>
+  | <%= button_to "OmniAuth", "/auth/developer", "data-turbo" => false %>
 </div>

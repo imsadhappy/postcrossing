@@ -7,20 +7,21 @@
 
 <h1><%= t('hello') %> <%= @user.name %></h1>
 
-<div><%=raw @user.about&.gsub "\n", '<br>' %></div>
-
-<div><%= t('account.details.last_seen') %>:
+<sub><%= t('account.details.last_seen') %>:
     <% if @user.last_seen == Date.today %>
         <%= t('date.today') %>
     <% else %>
         <%= time_ago_in_words @user.last_seen %> <%= t('date.ago') %>
     <% end %>
-</div>
+</sub>
+
+<p><%=raw @user.about&.gsub "\n", '<br>' %></p>
 
 <div>
     <%= button_to t('account.details.menu.delete_my_account'),
                     account_detail_path,
                     method: :delete,
+                    class: 'btn-secondary',
                     data: {
                         confirm: t('alert.confirm'),
                         turbo_confirm: t('alert.confirm')

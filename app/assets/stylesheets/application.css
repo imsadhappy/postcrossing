@@ -12,6 +12,7 @@
 *
 *= require normalize
 *= require fonts
+*= require fields
 *= require layout
 *= require_self
 */

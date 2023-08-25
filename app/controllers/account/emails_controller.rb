@@ -25,7 +25,7 @@ module Account
       notice = t('notice.email_changed')
       if @user.email_previously_changed?
         UserMailer.with(user: @user).email_verification.deliver_later
-        notice << ' ' << t('notice.email_verification.pending')
+        notice << '. ' << t('notice.email_verification.pending')
       end
       redirect_to account_detail_path, notice:
     end
