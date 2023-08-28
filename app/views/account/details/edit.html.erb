@@ -8,7 +8,7 @@
 
     <%= form_with(url: account_detail_path, method: :patch) do |form| %>
         <div class="field">
-            <%= form.text_area :about, value: strip_tags(@user.about) %>
+            <%= form.text_area :about, value: strip_tags(@user.about), rows: 10 %>
         </div>
 
         <div>

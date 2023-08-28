@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @user.sessions.find(params[:id])&.destroy
+    end_session(params[:id])
     redirect_to sessions_path, notice: t('notice.session_destroyed')
   end
 

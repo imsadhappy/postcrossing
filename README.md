@@ -4,6 +4,10 @@
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
+Version 0.3.4
+- redis storage for stats
+- fix sign out with cookie delete
+
 Version 0.3.3
 - form styling & refac
 

@@ -22,11 +22,13 @@ module Stats
         record_type_check
 
         q = 'record_start >= ? AND record_end <= ? AND record_type = ?'
-        records = where(q, start_day.to_date.beginning_of_day,
+        records = where(q,
+                        start_day.to_date.beginning_of_day,
                         (end_day || start_day).to_date.end_of_day,
-                        @record_type).pluck(:record_count)
+                        @record_type)
+                  .pluck :record_count
 
-        after_query if methods.include?(:after_query)
+        after_query if methods.include? :after_query
 
         records.sum
       end
@@ -36,22 +38,25 @@ module Stats
       def record(day = Date.current)
         record_type_check
 
-        record = find_or_create_by!(record_args(day))
+        record = find_or_create_by! record_args(day)
         record.record_count += 1
         record.save
 
-        after_record if methods.include?(:after_record)
+        RedisStorage.delall "stats_#{@record_type}_*"
+
+        after_record if methods.include? :after_record
+        after_query if methods.include? :after_query
 
         record.record_count
       end
 
       private
 
-      def record_args(day = Date.current)
+      def record_args(start_day = Date.current, end_day = nil, type = nil)
         {
-          record_start: day.beginning_of_day,
-          record_end: day.end_of_day,
-          record_type: @record_type
+          record_start: start_day.beginning_of_day,
+          record_end: (end_day || start_day).end_of_day,
+          record_type: type || @record_type
         }
       end
 

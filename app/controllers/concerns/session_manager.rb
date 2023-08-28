@@ -27,7 +27,14 @@ module SessionManager
     }
   end
 
-  def end_session
+  def end_session(session_id = nil)
+    return unless @user&.sessions
+
+    (session_id ? @user.sessions.find(session_id) : @user.sessions.first).destroy
+
+    return unless @user.sessions.empty?
+
     cookies.delete :postcrossing_user
+    cookies.delete :postcrossing_visit
   end
 end

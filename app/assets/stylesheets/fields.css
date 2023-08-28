@@ -33,34 +33,6 @@
     width: 100%;
 }
 
-.field input[type="text"],
-.field input[type="email"],
-.field input[type="url"],
-.field input[type="password"],
-.field input[type="search"],
-.field input[type="number"],
-.field input[type="tel"],
-.field input[type="range"],
-.field input[type="date"],
-.field input[type="month"],
-.field input[type="week"],
-.field input[type="time"],
-.field input[type="datetime"],
-.field input[type="datetime-local"],
-.field input[type="color"],
-.field textarea,
-.field select {
-    padding: 0;
-	border: none;
-    border-bottom: 2px solid black;
-    outline: none;
-    box-shadow: none;
-}
-
-.field textarea {
-    padding: 0
-}
-
 .field input[data-has-value="yes"] + label,
 .field input[value]:not([value=""]) + label,
 .field input:-webkit-autofill + label,

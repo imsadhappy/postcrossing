@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   before_validation if: :last_seen_changed?, on: :update do
-    Stats::Visits.record
+    record_visit_stats
   end
 
   before_create do
@@ -29,11 +29,21 @@ class User < ApplicationRecord
   end
 
   after_create do
-    Stats::Visits.record
-    Stats::Registrations.record
+    record_visit_stats
+    record_registration_stats
   end
 
   after_update if: :password_digest_previously_changed? do
     sessions.where.not(id: Current.session).delete_all
+  end
+
+  private
+
+  def record_visit_stats
+    Stats::Visits.record
+  end
+
+  def record_registration_stats
+    Stats::Registrations.record
   end
 end

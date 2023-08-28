@@ -26,7 +26,7 @@ Rails.application.configure do
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
-    # config.cache_store = :redis_cache_store, { url: 'redis://localhost:8001' }
+    # config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379' }
 
     config.session_store :cache_store, key: 'postcrossing_session'
 
@@ -80,4 +80,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.hosts << 'postcrossing.local'
+
+  config.redis_options = { host: 'localhost', port: 6379 }
 end

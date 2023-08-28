@@ -18,10 +18,6 @@ module Stats
       def after_query
         @record_type = nil
       end
-
-      def after_record
-        @record_type = nil
-      end
     end
   end
 end
