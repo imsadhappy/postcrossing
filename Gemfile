@@ -61,13 +61,13 @@ group :test do
   gem 'webdrivers'
 end
 
-group :production do
+group :development, :production do
   # Use Redis adapter to run Action Cable in production
   gem 'redis', '~> 4.0'
   gem 'hiredis'
 
   # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-  # gem 'kredis'
+  gem 'kredis'
 end
 
 gem 'tailwindcss-rails', '~> 2.0'

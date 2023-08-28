@@ -1,0 +1,54 @@
+.field {
+    margin: 1rem auto;
+    position: relative;
+}
+
+.field + .field {
+    margin-top: 2rem;
+}
+
+.field label {
+    cursor: text;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: auto;
+    bottom: 0;
+    width: 100%;
+    line-height: 3;
+    transition: all .3s;
+    opacity: .5;
+}
+
+.field label::selection {
+    background: transparent;
+}
+
+.field input {
+    width: 100%;
+    line-height: 3;
+}
+
+.field textarea {
+    width: 100%;
+}
+
+.field input[data-has-value="yes"] + label,
+.field input[value]:not([value=""]) + label,
+.field input:-webkit-autofill + label,
+.field input:-webkit-autofill:hover + label,
+.field input:-webkit-autofill:focus + label,
+.field input:-webkit-autofill:active + label,
+.field input:focus + label {
+    font-size: 75%;
+    transform: translateY(-1.5rem);
+    opacity: 1;
+}
+
+.field input[data-has-value="yes"]:invalid {
+    border-color: red;
+}
+
+.field input[data-has-value="yes"]:invalid + label {
+    color: red;
+}

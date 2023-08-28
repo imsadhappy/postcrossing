@@ -3,7 +3,7 @@
     <% links = [{text: 'about_me', url: edit_account_detail_path },
                 {text: 'my_password', url: edit_password_path },
                 {text: 'my_email', url: edit_account_email_path },
-                {text: 'devices_sessions', url: sessions_path }]
+                {text: 'browser_sessions', url: sessions_path }]
         links.each do |link| %>
 
         <li>
@@ -12,6 +12,6 @@
 
     <% end %>
 
-    <li><%= button_to t('button.sign_out'), Current.session, method: :delete %></li>
+    <li><%= button_to t('button.sign_out'), @session, method: :delete %></li>
 
 </menu>

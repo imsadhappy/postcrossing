@@ -1,5 +1,7 @@
 # app/models/user.rb
 class User < ApplicationRecord
+  include UserGroups
+
   has_secure_password
 
   has_many :email_verification_tokens, dependent: :destroy
@@ -18,41 +20,30 @@ class User < ApplicationRecord
     self.verified = false
   end
 
+  before_validation if: :last_seen_changed?, on: :update do
+    record_visit_stats
+  end
+
+  before_create do
+    self.last_seen = DateTime.now
+  end
+
+  after_create do
+    record_visit_stats
+    record_registration_stats
+  end
+
   after_update if: :password_digest_previously_changed? do
     sessions.where.not(id: Current.session).delete_all
   end
 
-  # groups
+  private
 
-  def admin?
-    is 'admin'
+  def record_visit_stats
+    Stats::Visits.record
   end
 
-  def is(group)
-    in_group "#{group}s"
-  end
-
-  def in_group(group)
-    groups.split(',').include? group.to_s.downcase
-  end
-
-  def add_to(group)
-    group = group.to_s.downcase
-    return false if in_group group
-
-    self.groups += ",#{group}"
-    save
-  end
-
-  def remove_from(group)
-    group = group.to_s.downcase
-    return false if group == 'users'
-
-    groups = self.groups.split(',')
-    return false unless groups.include? group
-
-    groups.delete(group)
-    self.groups = groups.join(',')
-    save
+  def record_registration_stats
+    Stats::Registrations.record
   end
 end

@@ -1,6 +1,8 @@
 # app/controllers/passwords_controller.rb
 class PasswordsController < ApplicationController
-  before_action :set_user
+  include UserManager
+
+  before_action :check_user
 
   def edit; end
 
@@ -16,8 +18,7 @@ class PasswordsController < ApplicationController
 
   private
 
-  def set_user
-    @user = Current.user
+  def check_user
     redirect_to sign_in_path unless @user
   end
 

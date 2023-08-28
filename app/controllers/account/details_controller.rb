@@ -1,7 +1,9 @@
 module Account
   # app/controllers/user/details_controller.rb
   class DetailsController < ApplicationController
-    before_action :set_user
+    include UserManager
+
+    before_action :check_user
 
     def show; end
 
@@ -17,19 +19,18 @@ module Account
 
     def destroy
       @user.destroy
-      cookies.delete :uid
+      end_session
       redirect_to root_path, notice: t('notice.account_deleted')
     end
 
     private
 
-    def strip_tags(string)
-      ActionView::Base.full_sanitizer.sanitize(string)
+    def check_user
+      redirect_to sign_in_path unless @user
     end
 
-    def set_user
-      @user = Current.user
-      redirect_to sign_in_path unless @user
+    def strip_tags(string)
+      ActionView::Base.full_sanitizer.sanitize(string)
     end
   end
 end

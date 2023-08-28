@@ -6,13 +6,7 @@
 
     <div class="float-right">
 
-      <% if Current.user %>
-          <%= link_to t("title.details.show"), account_detail_path %>
-          <%= button_to t("header.sign_out"), Current.session, method: :delete %>
-      <% else %>
-          <%= link_to t("header.sign_in"), sign_in_path %>
-          <%= link_to t("header.sign_up"), sign_up_path %>
-      <% end %>
+    <%= link_to t("title.details.show"), account_path %>
 
     </div>
 

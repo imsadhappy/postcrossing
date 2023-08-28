@@ -1,4 +1,4 @@
-<% if @user.errors.any? %>
+<% if @user&.errors&.any? %>
     <ul data-turbo-cache="false">
         <% @user.errors.each do |error| %>
             <li class="alert"><%= error.full_message %></li>

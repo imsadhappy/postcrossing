@@ -1,1 +1,12 @@
-
+<div id="stats">
+    <div id="registrations">
+        <%= stats_of 'registrations' %>
+        <%= stats_of 'registrations', 'for_month' %>
+        <%= stats_of 'registrations', 'for_year' %>
+    </div>
+    <div id="visits">
+        <%= stats_of 'visits' %>
+        <%= stats_of 'visits', 'for_month' %>
+        <%= stats_of 'visits', 'for_year' %>
+    </div>
+</div>

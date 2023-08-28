@@ -1,7 +1,7 @@
 module Account
   # app/controllers/user/emails_controller.rb
   class EmailsController < ApplicationController
-    before_action :set_user
+    include UserManager
 
     def edit; end
 
@@ -17,8 +17,7 @@ module Account
 
     private
 
-    def set_user
-      @user = Current.user
+    def check_user
       redirect_to sign_in_path unless @user
     end
 
@@ -26,7 +25,7 @@ module Account
       notice = t('notice.email_changed')
       if @user.email_previously_changed?
         UserMailer.with(user: @user).email_verification.deliver_later
-        notice += ' ' + t('notice.email_verification.pending')
+        notice << '. ' << t('notice.email_verification.pending')
       end
       redirect_to account_detail_path, notice:
     end

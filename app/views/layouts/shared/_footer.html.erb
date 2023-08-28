@@ -12,7 +12,7 @@
             <span class="cursor-default"><%= language_name %></span>
         <% else %>
           <%= link_to language_name,
-              url_for + "?preferred_locale=#{locale}",
+              url_for + "?hl=#{locale}",
               hreflang: locale,
               rel: 'alternate',
               class: 'opacity-50 hover:opacity-100' %>

@@ -1,19 +1,21 @@
 # app/controllers/sessions_controller.rb
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: %i[new create]
+  include UserManager
 
-  before_action :set_session, only: :destroy
+  before_action :check_user, only: %i[index destroy]
 
   def index
-    @sessions = Current.user.sessions.order(created_at: :desc)
+    @session_list = @user.sessions.order(created_at: :desc)
   end
 
-  def new; end
+  def new
+    redirect_to account_detail_path if @user
+  end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user&.authenticate(params[:password])
-      @session = helpers.create_session(user)
+    @user = User.find_by(email: params[:email])
+    if @user&.authenticate(params[:password])
+      start_session(@user)
       redirect_to account_detail_path, notice: t('notice.session_created')
     else
       redirect_to sign_in_path(email_hint: params[:email]), alert: t('alert.invalid_sign_in')
@@ -21,13 +23,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @session.destroy
-    redirect_to account_detail_path, notice: t('notice.session_destroyed')
+    end_session(params[:id])
+    redirect_to sessions_path, notice: t('notice.session_destroyed')
   end
 
   private
 
-  def set_session
-    @session = Current.user.sessions.find(params[:id])
+  def check_user
+    redirect_to sign_in_path unless @user
   end
 end

@@ -8,7 +8,7 @@ class SessionsTest < ApplicationSystemTestCase
   test "visiting the index" do
     sign_in_as @user
 
-    click_on "Devices & Sessions"
+    click_on "Browsers & Sessions"
     assert_selector "h1", text: "Sessions"
   end
 

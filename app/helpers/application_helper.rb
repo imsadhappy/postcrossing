@@ -1,26 +1,30 @@
 # app/helpers/application_helper.rb
 module ApplicationHelper
-  def current_locale
-    preferred_locale = cookies[:preferred_locale]
-    locale = params[:locale] || I18n.default_locale
-    preferred_locale && preferred_locale != locale.to_s ? preferred_locale : locale
-  end
-
-  def preferred_locale
-    preferred_locale = params[:preferred_locale]
-    return unless preferred_locale
-
-    if preferred_locale == I18n.default_locale.to_s
-      cookies.delete :preferred_locale
-    else
-      cookies.permanent[:preferred_locale] = preferred_locale
+  def stats_of(record_type, record_period = 'for_day')
+    record_key = "stats_#{record_type}_#{record_period}"
+    record = RedisStorage.get record_key
+    unless record
+      record = Stats.class_eval(record_type.capitalize).send(record_period)
+      RedisStorage.set record_key, record
     end
-    preferred_locale
+    record
+  rescue NoMethodError
+    puts 'is Stats record_period correct?'
+  rescue NameError
+    puts 'is Stats record_type correct?'
   end
 
-  def create_session(user)
-    session = user.sessions.create!
-    cookies.signed.permanent[:uid] = { value: session.id, httponly: true }
-    session
+  def stats_for(id, record_type, record_period = 'for_day')
+    record_key = "stats_#{record_type}_#{id}_#{record_period}"
+    record = RedisStorage.get record_key
+    unless record
+      record = Stats.class_eval(record_type.capitalize).of(id.to_i).send(record_period)
+      RedisStorage.set record_key, record
+    end
+    record
+  rescue NoMethodError
+    puts 'is Stats record_period correct?'
+  rescue NameError
+    puts 'is Stats record_type correct?'
   end
 end

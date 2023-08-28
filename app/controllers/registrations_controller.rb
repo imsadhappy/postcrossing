@@ -1,15 +1,17 @@
 # app/controllers/registrations_controller.rb
 class RegistrationsController < ApplicationController
-  skip_before_action :authenticate
+  include SessionManager
+
+  before_action :check_session
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(permitted_params)
     if @user.save
-      helpers.create_session(@user)
+      start_session(@user)
       UserMailer.with(user: @user).email_verification.deliver_later
       redirect_to account_detail_path, notice: t('notice.registration_successful')
     else
@@ -19,7 +21,11 @@ class RegistrationsController < ApplicationController
 
   private
 
-  def user_params
+  def check_session
+    redirect_to account_detail_path if @session
+  end
+
+  def permitted_params
     params.permit(:name, :email, :password, :password_confirmation)
   end
 end
