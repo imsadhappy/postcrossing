@@ -1,5 +1,5 @@
 module Account
-  # app/controllers/user/password_resets_controller.rb
+  # app/controllers/account/password_resets_controller.rb
   class PasswordResetsController < ApplicationController
     include SessionManager
 
@@ -31,7 +31,7 @@ module Account
     private
 
     def check_session
-      redirect_to account_detail_path if @session
+      redirect_to account_path if @session
     end
 
     def set_user_via_token

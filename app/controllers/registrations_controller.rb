@@ -13,7 +13,7 @@ class RegistrationsController < ApplicationController
     if @user.save
       start_session(@user)
       UserMailer.with(user: @user).email_verification.deliver_later
-      redirect_to account_detail_path, notice: t('notice.registration_successful')
+      redirect_to account_path, notice: t('notice.registration_successful')
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,7 +22,7 @@ class RegistrationsController < ApplicationController
   private
 
   def check_session
-    redirect_to account_detail_path if @session
+    redirect_to account_path if @session
   end
 
   def permitted_params

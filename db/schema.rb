@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_19_071110) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_154845) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "email_verification_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_email_verification_tokens_on_user_id"
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "slug"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "password_reset_tokens", force: :cascade do |t|
@@ -43,15 +51,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_071110) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "uid"
-    t.string "name", null: false
     t.string "email", null: false
+    t.string "name", null: false
     t.text "about"
+    t.text "address"
     t.string "groups", default: "users", null: false
     t.date "last_seen", null: false
-    t.string "password_digest", null: false
-    t.string "provider"
     t.boolean "verified", default: false, null: false
+    t.string "password_digest", null: false
+    t.string "uid"
+    t.string "provider"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

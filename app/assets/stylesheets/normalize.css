@@ -1,14 +1,27 @@
-form.button_to {
-    display: inline
+a {
+    position: relative;
 }
 
-a.active {
-    font-family: 'e-Ukraine-Bold';
+a:after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    background-color: black;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    transition: all .2s;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-    box-shadow: 0 0 0 30px white inset !important;
+a:hover:after {
+    width: 100%;
+}
+
+menu li {
+    cursor: default;
+    font-family: "e-Ukraine-Bold";
+}
+
+menu li a {
+    font-family: "e-Ukraine-Light"
 }

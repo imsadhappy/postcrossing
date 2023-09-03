@@ -1,13 +1,6 @@
 <%= render "account/shared/menu" %>
 
-<% if @user.verified? %>
-  <h1><%= t('title.emails.edit') %></h1>
-<% else %>
-  <h1><%= t('email.verify') %></h1>
-  <%= render "account/shared/verify" %>
-<% end %>
-
-<%= render "account/shared/errors" %>
+<h1><%= t('title.emails.edit') %></h1>
 
 <%= form_with(url: account_email_path, method: :patch) do |form| %>
   <div class="field">

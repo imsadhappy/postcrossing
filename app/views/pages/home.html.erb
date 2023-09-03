@@ -1,0 +1,24 @@
+<table id="stats">
+    <thead>
+        <tr>
+            <td></td>
+            <th><%= t('stats.today') %></th>
+            <th><%= t('stats.for_month') %></th>
+            <th><%= t('stats.for_year') %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr id="registrations">
+            <td><%= t('stats.registrations') %></td>
+            <td><%= stats 'registrations' %></td>
+            <td><%= stats 'registrations', 'for_month' %></td>
+            <td><%= stats 'registrations', 'for_year' %></td>
+        </tr>
+        <tr id="visits">
+            <td><%= t('stats.unique_visits') %></td>
+            <td><%= stats 'visits' %></td>
+            <td><%= stats 'visits', 'for_month' %></td>
+            <td><%= stats 'visits', 'for_year' %></td>
+        </tr>
+    </tbody>
+</table>

@@ -7,10 +7,10 @@ class RedisStorage
       REDIS.get key
     end
 
-    def set(key, value)
+    def set(key, value, exp = -1)
       return unless init?
 
-      REDIS.set key, value
+      REDIS.set key, value, ex: exp.to_i
     end
 
     def del(key)

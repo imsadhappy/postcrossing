@@ -1,0 +1,19 @@
+footer {
+  padding: 1rem 0;
+  flex-shrink: 0;
+  color: white;
+  background-color: black;
+}
+
+footer a:after {
+    background-color: white;
+}
+
+footer .link-to {
+    cursor: default;
+    color: rgba(255, 255, 255, .5);
+}
+
+footer .link-to a {
+    color: white;
+}

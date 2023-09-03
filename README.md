@@ -4,6 +4,13 @@
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
 
+* TODO: configure error pages https://mattbrictson.com/blog/dynamic-rails-error-pages
+
+Version 0.3.5
+- redis stats daily expiration
+- added address field to user
+- pages controller
+
 Version 0.3.4
 - redis storage for stats
 - fix sign out with cookie delete

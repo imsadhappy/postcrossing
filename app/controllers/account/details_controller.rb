@@ -1,5 +1,5 @@
 module Account
-  # app/controllers/user/details_controller.rb
+  # app/controllers/account/details_controller.rb
   class DetailsController < ApplicationController
     include UserManager
 
@@ -7,11 +7,16 @@ module Account
 
     def show; end
 
-    def edit; end
+    def edit
+      @field_name = request.path.split('/')[2]
+      redirect_to account_path unless @user.has_attribute?(@field_name)
+      @page_title = t("title.#{@field_name}.#{action_name}")
+      @field_value = @user.instance_eval(@field_name)
+    end
 
     def update
-      if @user.update(about: strip_tags(params[:about]))
-        redirect_to account_detail_path, notice: t('notice.changes_saved')
+      if @user.update(user_params)
+        redirect_to account_path, notice: t('notice.changes_saved')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -31,6 +36,10 @@ module Account
 
     def strip_tags(string)
       ActionView::Base.full_sanitizer.sanitize(string)
+    end
+
+    def user_params
+      params.permit(:about, :address)
     end
   end
 end

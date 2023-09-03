@@ -14,5 +14,7 @@
 *= require fonts
 *= require fields
 *= require layout
+*= require header
+*= require footer
 *= require_self
 */

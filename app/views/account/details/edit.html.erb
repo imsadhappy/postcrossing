@@ -1,19 +1,13 @@
 <%= render "account/shared/menu" %>
 
-<div>
+<h1><%= @page_title %></h1>
 
-    <h1><%= t('title.details.edit') %></h1>
+<%= form_with(url: account_path, method: :patch) do |form| %>
+    <div class="field">
+        <%= form.text_area @field_name, value: strip_tags(@field_value), rows: 10, placeholder: t("placeholder.#{@field_name}") %>
+    </div>
 
-    <%= render "account/shared/errors" %>
-
-    <%= form_with(url: account_detail_path, method: :patch) do |form| %>
-        <div class="field">
-            <%= form.text_area :about, value: strip_tags(@user.about), rows: 10 %>
-        </div>
-
-        <div>
-            <%= form.submit t('button.save_changes'), class: 'btn-primary' %>
-        </div>
-    <% end %>
-
-</div>
+    <div>
+        <%= form.submit t('button.save_changes'), class: 'btn-primary' %>
+    </div>
+<% end %>

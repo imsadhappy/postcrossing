@@ -1,7 +1,5 @@
 <h1><%= t('title.password_resets.new') %></h1>
 
-<%= render "account/shared/errors" %>
-
 <%= form_with(url: account_password_reset_path, method: :patch) do |form| %>
 
   <%= form.hidden_field :sid, value: params[:sid] %>

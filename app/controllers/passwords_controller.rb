@@ -10,7 +10,7 @@ class PasswordsController < ApplicationController
     if !@user.authenticate(params[:current_password])
       redirect_to edit_password_path, alert: t('alert.password.current_incorrect')
     elsif @user.update(user_params)
-      redirect_to account_detail_path, notice: t('notice.password.changed')
+      redirect_to account_path, notice: t('notice.password.changed')
     else
       render :edit, status: :unprocessable_entity
     end

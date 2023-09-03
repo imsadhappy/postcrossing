@@ -1,7 +1,5 @@
 <h1><%= t('title.registrations.new') %></h1>
 
-<%= render "account/shared/errors" %>
-
 <%= form_with(url: sign_up_path) do |form| %>
   <div class="field">
     <%= form.text_field :name, value: @user.name, required: true, autocomplete: "name" %>

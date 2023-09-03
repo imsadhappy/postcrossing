@@ -1,14 +1,43 @@
 <footer>
+
   <div class="wrapper">
-    <div id="copyright" class="float-left">
-      <span>&copy;</span>
-      <span itemprop="copyrightYear"><%= Date.today.year %></span>
-      <span itemprop="copyrightHolder"><%= request.env['HTTP_HOST'] %></span>
+
+    <div id="stats" class="mb-8">
+
+        <div class="mb-4 link-to">
+            <b><%= link_to_unless_current t('stats.community_stats'), '/stats' %></b>
+        </div>
+
+        <div>
+            <%= t('stats.registrations') %>:
+            <%= stats 'registrations' %> <%= t('stats.today') %>  |
+            <%= stats 'registrations', 'for_month' %> <%= t('stats.this_month') %> |
+            <%= stats 'registrations', 'for_year' %> <%= t('stats.this_year') %>
+        </div>
+
+        <div>
+            <%= t('stats.unique_visits') %>:
+            <%= stats 'visits' %> <%= t('stats.today') %> |
+            <%= stats 'visits', 'for_month' %> <%= t('stats.this_month') %> |
+            <%= stats 'visits', 'for_year' %> <%= t('stats.this_year') %>
+        </div>
+
+        <div class="mt-4 link-to"><%= link_to_unless_current t('label.see_more'), '/stats' %></div>
+
     </div>
+
+    <div id="copyright" class="float-left">
+
+        <span>&copy;</span>
+        <span itemprop="copyrightYear"><%= Date.today.year %></span>
+        <span itemprop="copyrightHolder"><%= request.env['HTTP_HOST'].capitalize %></span> |
+        <span class="link-to"><%= link_to_unless_current t('title.pages.privacy_policy'), '/privacy-policy' %></span>
+    </div>
+
     <div class="float-right">
-      <% I18n.available_locales.each do |locale| %>
-        <% language_name = I18n.t("language_name.#{locale}", locale: locale) %>
-        <% if I18n.locale == locale %>
+      <% I18n.available_locales.each do |locale|
+        language_name = t("language_name.#{locale}", locale: locale).capitalize
+        if I18n.locale == locale %>
             <span class="cursor-default"><%= language_name %></span>
         <% else %>
           <%= link_to language_name,
@@ -16,8 +45,9 @@
               hreflang: locale,
               rel: 'alternate',
               class: 'opacity-50 hover:opacity-100' %>
-        <% end %>
-      <% end %>
+        <% end
+      end %>
     </div>
+
   </div>
 </footer>

@@ -8,21 +8,9 @@ html, body {
   flex-direction: column;
 }
 
-header {
-  flex-shrink: 0;
-  padding: 1rem 0;
-}
-
 main {
   flex: 1 0 auto;
   padding: 1rem 0;
-}
-
-footer {
-  padding: 1rem 0;
-  flex-shrink: 0;
-  color: white;
-  background-color: black;
 }
 
 .wrapper {

@@ -7,15 +7,20 @@ en:
     password_confirmation: "Password confirmation"
     password_new: "New password"
     password_current: "Current password"
+    see_more: "See more"
   button:
     sign_in: "Sign in"
     sign_up: "Sign up"
     sign_out: "Sign out"
     save_changes: "Save changes"
     reset_password: "Reset"
+  placeholder:
+    about: "foo"
+    address: "bar"
   title:
-    home:
-      index: "Home"
+    pages:
+      home: "Home"
+      privacy_policy: "Privacy Policy"
     sessions:
       new: "Sign in"
       index: "Browsers & sessions"
@@ -27,15 +32,13 @@ en:
       edit: "Reset password"
       new: "Reset password"
     details:
-      edit: "Change my account details"
       show: "My account"
+    about:
+      edit: "Change my account details"
+    address:
+      edit: "Change my post address"
     emails:
       edit: "Change email"
-  header:
-    home: "Home"
-    sign_in: "Sign in"
-    sign_up: "Sign up"
-    sign_out: "Sign out"
   language_name:
     en: "english"
     uk: "ukrainian"
@@ -44,8 +47,9 @@ en:
     details:
       menu:
         about_me: "About me"
-        my_password: "Change password"
-        my_email: "Change email"
+        my_address: "My post address"
+        change_password: "Change password"
+        change_email: "Change email"
         browser_sessions: "Browsers & sessions"
         delete_my_account: "Delete my account"
       last_seen: "Last seen online"
@@ -55,6 +59,15 @@ en:
       created_at: "Created at"
       this_user_agent: "This User Agent"
       this_ip_address: "This IP Address"
+  stats:
+    community_stats: "Community Statistics"
+    registrations: "Registrations"
+    unique_visits: "Unique visits"
+    today: "today"
+    this_month: "this month"
+    this_year: "this year"
+    for_month: "for month"
+    for_year: "for year"
   email:
     verify: "Verify your email"
     new: "New email"

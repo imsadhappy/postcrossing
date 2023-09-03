@@ -17,9 +17,11 @@
 
 <p><%=raw @user.about&.gsub "\n", '<br>' %></p>
 
+<address><%=raw @user.address&.gsub "\n", '<br>' %></address>
+
 <div>
     <%= button_to t('account.details.menu.delete_my_account'),
-                    account_detail_path,
+                    account_path,
                     method: :delete,
                     class: 'btn-secondary',
                     data: {

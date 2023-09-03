@@ -1,5 +1,5 @@
 module Account
-  # app/controllers/user/emails_controller.rb
+  # app/controllers/account/emails_controller.rb
   class EmailsController < ApplicationController
     include UserManager
 
@@ -27,7 +27,7 @@ module Account
         UserMailer.with(user: @user).email_verification.deliver_later
         notice << '. ' << t('notice.email_verification.pending')
       end
-      redirect_to account_detail_path, notice:
+      redirect_to account_path, notice:
     end
   end
 end

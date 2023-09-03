@@ -42,6 +42,13 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  # Include generic and useful information about system operation, but avoid logging too much
+  # information to avoid inadvertent exposure of personally identifiable information (PII).
+  # config.log_level = :info
+
+  # Prepend all log lines with the following tags.
+  config.log_tags = [:request_id]
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

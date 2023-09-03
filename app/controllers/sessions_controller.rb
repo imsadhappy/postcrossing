@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
   end
 
   def new
-    redirect_to account_detail_path if @user
+    redirect_to account_path if @user
   end
 
   def create
     @user = User.find_by(email: params[:email])
     if @user&.authenticate(params[:password])
       start_session(@user)
-      redirect_to account_detail_path, notice: t('notice.session_created')
+      redirect_to account_path, notice: t('notice.session_created')
     else
       redirect_to sign_in_path(email_hint: params[:email]), alert: t('alert.invalid_sign_in')
     end

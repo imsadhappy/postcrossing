@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  match '/500', to: 'application#internal_server_error', via: :all
+  root 'pages#home'
   get  'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create'
   get  'sign_up', to: 'registrations#new'
@@ -9,12 +10,13 @@ Rails.application.routes.draw do
   post '/auth/:provider/callback', to: 'sessions/omniauth#create'
   resources :sessions, only: %i[index show destroy]
   resource  :password, only: %i[edit update]
-  match '/account', to: redirect('/account/detail'), via: %i[get post]
+  resource :account, controller: 'account/details', only: %i[show update destroy]
   namespace :account do
-    resource :email,              only: %i[edit update]
+    resource :email, only: %i[edit update]
     resource :email_verification, only: %i[show create]
-    resource :password_reset,     only: %i[new edit create update]
-    resource :detail,             only: %i[show edit update destroy]
+    resource :password_reset, only: %i[new edit create update]
+    resource :about, controller: 'details', only: %i[edit]
+    resource :address, controller: 'details', only: %i[edit]
   end
-  match '*path', to: redirect('/404.html'), via: %i[get post]
+  match '*path', to: 'pages#show', via: %i[get post]
 end

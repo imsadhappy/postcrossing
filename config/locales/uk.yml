@@ -7,15 +7,20 @@ uk:
     password_confirmation: "Підтвердження пароля"
     password_new: "Новий пароль"
     password_current: "Поточний пароль"
+    see_more: "Більше"
   button:
     sign_in: "Увійти"
     sign_up: "Зареєструватись"
     sign_out: "Вийти"
     save_changes: "Зберегти зміни"
     reset_password: "Скинути"
+  placeholder:
+    about: "foo"
+    address: "країна\nобласть\nмісто/село\nвулиця\nпоштовий індекс\nпоштова скринька"
   title:
-    home:
-      index: "Головна"
+    pages:
+      home: "Головна"
+      privacy_policy: "Політика конфіденційності"
     sessions:
       new: "Вхід"
       index: "Браузери та сеанси"
@@ -27,15 +32,13 @@ uk:
       edit: "Скинути пароль"
       new: "Скинути пароль"
     details:
-      edit: "Змінити відомості про мене"
       show: "Мій обліковий запис"
+    about:
+      edit: "Змінити відомості про мене"
+    address:
+      edit: "Змінити мою поштову адресу"
     emails:
       edit: "Змінити електронну пошту"
-  header:
-    home: "Головна"
-    sign_in: "Вхід"
-    sign_up: "Реєстрація"
-    sign_out: "Вихід"
   language_name:
     en: "англійська"
     uk: "українська"
@@ -44,8 +47,9 @@ uk:
     details:
       menu:
         about_me: "Про мене"
-        my_password: "Змінити пароль"
-        my_email: "Змінити електронну пошта"
+        my_address: "Мою поштова адреса"
+        change_password: "Змінити пароль"
+        change_email: "Змінити електронну пошту"
         browser_sessions: "Браузеры та сеанси"
         delete_my_account: "Видалити мій обліковий запис"
       last_seen: "Востаннє онлайн"
@@ -55,6 +59,15 @@ uk:
       created_at: "Створено"
       this_user_agent: "Цей браузер"
       this_ip_address: "Ця IP адреса"
+  stats:
+    community_stats: "Статистика спільноти"
+    registrations: "Реєстрації"
+    unique_visits: "Унікальні відвідувачі"
+    today: "сьогодні"
+    this_month: "цього місяця"
+    this_year: "цього року"
+    for_month: "за місяць"
+    for_year: "за рік"
   email:
     verify: "Підтвердьте свою електронну пошту"
     new: "Нова електронна пошта"

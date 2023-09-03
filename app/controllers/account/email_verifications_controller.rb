@@ -1,5 +1,5 @@
 module Account
-  # app/controllers/user/email_verifications_controller.rb
+  # app/controllers/account/email_verifications_controller.rb
   class EmailVerificationsController < ApplicationController
     include UserManager
 
@@ -9,12 +9,12 @@ module Account
     def show
       @user.update! verified: true
       start_session(@user)
-      redirect_to account_detail_path, notice: t('notice.email_verification.show')
+      redirect_to account_path, notice: t('notice.email_verification.show')
     end
 
     def create
       UserMailer.with(user: @user).email_verification.deliver_later
-      redirect_to account_detail_path, notice: t('notice.email_verification.create')
+      redirect_to account_path, notice: t('notice.email_verification.create')
     end
 
     private
@@ -23,7 +23,7 @@ module Account
       token = EmailVerificationToken.find_signed!(params[:sid])
       @user = token.user
     rescue StandardError
-      redirect_to account_detail_path, alert: t('notice.email_verification.invalid')
+      redirect_to account_path, alert: t('notice.email_verification.invalid')
     end
   end
 end
