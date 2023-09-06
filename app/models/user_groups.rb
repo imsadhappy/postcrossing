@@ -24,11 +24,11 @@ module UserGroups
     group = group.to_s.downcase
     return false if group == 'users'
 
-    groups = self.groups.split(',')
-    return false unless groups.include? group
+    current_groups = self.groups.split(',')
+    return false unless current_groups.include? group
 
-    groups.delete(group)
-    self.groups = groups.join(',')
+    current_groups.delete(group)
+    self.groups = current_groups.join(',')
     save
   end
 end

@@ -20,7 +20,9 @@ uk:
   title:
     pages:
       home: "Головна"
+      index: "Сторінки"
       privacy_policy: "Політика конфіденційності"
+      not_found: "Сторінка не існує"
     sessions:
       new: "Вхід"
       index: "Браузери та сеанси"

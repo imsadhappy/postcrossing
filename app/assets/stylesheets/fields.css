@@ -10,7 +10,7 @@ form.button_to {
 }
 
 .field {
-    margin: 1rem auto;
+    margin: 1.5rem auto;
     position: relative;
 }
 
@@ -24,7 +24,6 @@ form.button_to {
     left: 0;
     top: 0;
     margin: auto;
-    bottom: 0;
     width: 100%;
     line-height: 3;
     transition: all .3s;
@@ -33,6 +32,11 @@ form.button_to {
 
 .field label::selection {
     background: transparent;
+    color: inherit;
+}
+
+.field [required] + label:after {
+    content: '*';
 }
 
 .field input {
@@ -41,15 +45,18 @@ form.button_to {
 }
 
 .field textarea {
+    padding-top: .75rem !important;
     width: 100%;
 }
 
-.field input[data-has-value="yes"] + label,
-.field input[value]:not([value=""]) + label,
-.field input:-webkit-autofill + label,
-.field input:-webkit-autofill:hover + label,
-.field input:-webkit-autofill:focus + label,
-.field input:-webkit-autofill:active + label,
+.field [data-has-value="yes"] + label,
+.field [value]:not([value=""]):not([data-has-value="no"]) + label,
+.field :-webkit-autofill + label,
+.field :-webkit-autofill:hover + label,
+.field :-webkit-autofill:focus + label,
+.field :-webkit-autofill:active + label,
+.field textarea:not(:empty):not([data-has-value="no"]) + label,
+.field textarea:focus + label,
 .field input:focus + label {
     font-size: 75%;
     transform: translateY(-1.5rem);

@@ -20,7 +20,9 @@ en:
   title:
     pages:
       home: "Home"
+      index: "Pages"
       privacy_policy: "Privacy Policy"
+      not_found: "Page not found"
     sessions:
       new: "Sign in"
       index: "Browsers & sessions"

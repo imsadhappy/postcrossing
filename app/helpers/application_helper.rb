@@ -1,13 +1,7 @@
 # app/helpers/application_helper.rb
 module ApplicationHelper
   def document_title
-    if @page
-      @page.title
-    elsif @page_title
-      @page_title
-    else
-      t("title.#{controller_name}.#{action_name}")
-    end
+    @document_title || t("title.#{controller_name}.#{action_name}")
   end
 
   def log(msg)
@@ -16,13 +10,10 @@ module ApplicationHelper
   end
 
   def stats(record_type, record_period = 'for_day')
-    record_key = "stats_#{record_type}_#{record_period}"
-    record = RedisStorage.get record_key
-    unless record
-      record = Stats.class_eval(record_type.capitalize).send(record_period)
-      RedisStorage.set record_key, record, Time.current.end_of_day
+    RedisStorage.fetch "stats_#{record_type}_#{record_period}",
+                       (Time.current.end_of_day - Time.current).round do
+      Stats.class_eval(record_type.capitalize).send(record_period)
     end
-    record
   rescue NoMethodError
     log 'invalid stats record_period, ' << caller[1]
   rescue NameError
@@ -30,13 +21,10 @@ module ApplicationHelper
   end
 
   def stats_for(id, record_type, record_period = 'for_day')
-    record_key = "stats_#{record_type}_#{id}_#{record_period}"
-    record = RedisStorage.get record_key
-    unless record
-      record = Stats.class_eval(record_type.capitalize).of(id.to_i).send(record_period)
-      RedisStorage.set record_key, record, Time.current.end_of_day
+    RedisStorage.fetch "stats_#{record_type}_#{id}_#{record_period}",
+                       (Time.current.end_of_day - Time.current).round do
+      Stats.class_eval(record_type.capitalize).of(id.to_i).send(record_period)
     end
-    record
   rescue NoMethodError
     log 'invalid stats record_period, ' << caller[1]
   rescue NameError

@@ -5,6 +5,11 @@ footer {
   background-color: black;
 }
 
+footer ::selection {
+    background: white;
+    color: black;
+}
+
 footer a:after {
     background-color: white;
 }

@@ -2,6 +2,7 @@ module Stats
   # app/models/stats/record.rb
   class Record < ApplicationRecord
     self.abstract_class = true
+    self.table_name = 'stats'
 
     class << self
       def for_day(day = Date.current)

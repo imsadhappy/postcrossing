@@ -1,10 +1,11 @@
 <%= render "account/shared/menu" %>
 
-<h1><%= @page_title %></h1>
+<h1><%= @document_title %></h1>
 
 <%= form_with(url: account_path, method: :patch) do |form| %>
     <div class="field">
-        <%= form.text_area @field_name, value: strip_tags(@field_value), rows: 10, placeholder: t("placeholder.#{@field_name}") %>
+        <%= form.text_area @field_name, value: strip_tags(@field_value), rows: 10 %>
+        <%= form.label @field_name, t("placeholder.#{@field_name}") %>
     </div>
 
     <div>

@@ -1,0 +1,19 @@
+<% if pagination.exists? %>
+    <div class="pagination">
+    <% if pagination.previous_page? %>
+        <%= link_to 'First', posts_path(page: 1) %>
+        <%= link_to '< Previous', posts_path(page: pagination.previous_page) %>
+    <% else %>
+        <p>First</p>
+        <p>&#60; Previous</p>
+    <% end %>
+    <p><%= "Page #{pagination.page} of #{pagination.total_pages}" %></p>
+    <% if pagination.next_page? %>
+        <%= link_to 'Next >', posts_path(page: pagination.next_page) %>
+        <%= link_to 'Last', posts_path(page: pagination.total_pages) %>
+    <% else %>
+        <p>Next &#62;</p>
+        <p>Last </p>
+    <% end %>
+    </div>
+<% end %>

@@ -1,6 +1,15 @@
 # lib/redis_storage.rb
 class RedisStorage
   class << self
+    def fetch(key, exp, force = false)
+      value = get key
+      unless value || force
+        value = yield
+        set key, value, exp
+      end
+      value
+    end
+
     def get(key)
       return unless init?
 

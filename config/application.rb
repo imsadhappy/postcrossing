@@ -17,7 +17,8 @@ module PostCrossing
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # Timezone needs to be UTC otherwise the stats won't show correctly
+    config.time_zone = 'UTC'
     config.eager_load_paths << Rails.root.join('lib')
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = 'uk'

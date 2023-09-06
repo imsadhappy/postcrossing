@@ -10,7 +10,7 @@ module Account
     def edit
       @field_name = request.path.split('/')[2]
       redirect_to account_path unless @user.has_attribute?(@field_name)
-      @page_title = t("title.#{@field_name}.#{action_name}")
+      @document_title = t("title.#{@field_name}.#{action_name}")
       @field_value = @user.instance_eval(@field_name)
     end
 

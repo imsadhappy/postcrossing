@@ -6,6 +6,11 @@
 
 * TODO: configure error pages https://mattbrictson.com/blog/dynamic-rails-error-pages
 
+Version 0.3.6
+- pagination
+- stats combined into one table
+- pages controller
+
 Version 0.3.5
 - redis stats daily expiration
 - added address field to user
