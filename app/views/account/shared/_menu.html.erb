@@ -10,6 +10,10 @@
         </li>
     <% end %>
 
+    <% if @user.admin? %>
+        <li><%= link_to t('title.admin.index'), admin_index_path %></li>
+    <% end %>
+
     <li><%= link_to t('button.sign_out'), sign_out_path %></li>
 
 </menu>

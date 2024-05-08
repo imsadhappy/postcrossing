@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true, allow_nil: false
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, allow_nil: true, length: { minimum: 12 }
+  validates :password, presence: true, allow_nil: false # length: { minimum: 12 }
 
   before_validation if: -> { email.present? } do
     self.email = email.downcase.strip

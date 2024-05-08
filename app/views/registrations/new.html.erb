@@ -2,12 +2,12 @@
 
 <%= form_with(url: sign_up_path) do |form| %>
   <div class="field">
-    <%= form.text_field :name, value: @user.name, required: true, autocomplete: "name" %>
+    <%= form.text_field :name, value: params[:name], required: true, autocomplete: "name" %>
     <%= form.label :name, t('label.name') %>
   </div>
 
   <div class="field">
-    <%= form.email_field :email, value: @user.email, required: true, autocomplete: "email" %>
+    <%= form.email_field :email, value: params[:email], required: true, autocomplete: "email" %>
     <%= form.label :email, t('label.email') %>
   </div>
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get  '/auth/failure',            to: 'sessions/omniauth#failure'
   get  '/auth/:provider/callback', to: 'sessions/omniauth#create'
   post '/auth/:provider/callback', to: 'sessions/omniauth#create'
-  resources :pages, only: %i[index create edit update destroy]
+  get  '/sitemap.xml',             to: 'application#sitemap'
   resources :sessions, only: %i[index show destroy]
   resource  :password, only: %i[edit update]
   resource :account, controller: 'account/details', only: %i[show update destroy]
@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     resource :about, controller: 'details', only: %i[edit]
     resource :address, controller: 'details', only: %i[edit]
   end
+  resources :admin, only: %i[index create edit update destroy]
   match '*path', to: 'pages#show', via: %i[get post]
 end

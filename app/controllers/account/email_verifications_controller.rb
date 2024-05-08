@@ -8,7 +8,7 @@ module Account
 
     def show
       @user.update! verified: true
-      start_session(@user)
+      start_session
       redirect_to account_path, notice: t('notice.email_verification.show')
     end
 

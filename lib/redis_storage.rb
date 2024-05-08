@@ -1,7 +1,7 @@
 # lib/redis_storage.rb
 class RedisStorage
   class << self
-    def fetch(key, exp, force = false)
+    def fetch(key, exp, force: false)
       value = get key
       unless value || force
         value = yield
@@ -28,10 +28,10 @@ class RedisStorage
       REDIS.del key
     end
 
-    def delall(patter)
+    def delall(pattern)
       return unless init?
 
-      REDIS.keys(patter).each do |key|
+      REDIS.keys(pattern).each do |key|
         REDIS.del key
       end
     end

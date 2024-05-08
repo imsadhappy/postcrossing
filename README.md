@@ -1,8 +1,12 @@
 # README
 
+* `docker-compose up -d` for postgres & redis
 * install gems: `bundle install` (install solargraph & rubocop for development)
 * run dev server: `rails s` or `rails server`
 * run tailwind watcher: `rails tailwindcss:watch`
+* edit dev credentials: `EDITOR="code --wait" rails credentials:edit --environment=development`
+* edit prod credentials: `EDITOR="code --wait" rails credentials:edit --environment=production`
+* reset db: `rake db:drop db:create db:migrate`
 
 * TODO: configure error pages https://mattbrictson.com/blog/dynamic-rails-error-pages
 

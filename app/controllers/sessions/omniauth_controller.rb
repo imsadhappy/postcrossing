@@ -6,12 +6,20 @@ module Sessions
     skip_before_action :verify_authenticity_token
 
     def create
-      @user = User.create_with(user_params).find_or_initialize_by(omniauth_params)
-      if @user.save
-        start_session(@user)
+      @user = User.find_by(omniauth_params)
+      if @user
+        @user.update(last_seen: DateTime.now)
+        start_session
         redirect_to account_path, notice: t('notice.session_created')
       else
-        redirect_to sign_in_path, alert: t('alert.auth_failed')
+        if User.find_by(email: omniauth.info.email)
+          redirect_to sign_in_path, alert: t('alert.auth_failed')
+        else
+          @user = User.new(user_params.merge(omniauth_params))
+          @user.save
+          start_session
+          redirect_to account_path, notice: t('notice.session_created')
+        end
       end
     end
 

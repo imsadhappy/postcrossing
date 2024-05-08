@@ -41,6 +41,8 @@ en:
       edit: "Change my post address"
     emails:
       edit: "Change email"
+    admin:
+      index: "Admin Panel"
   language_name:
     en: "english"
     uk: "ukrainian"
@@ -62,7 +64,7 @@ en:
       this_user_agent: "This User Agent"
       this_ip_address: "This IP Address"
   stats:
-    community_stats: "Community Statistics"
+    community_stats: "Community Stats"
     registrations: "Registrations"
     unique_visits: "Unique visits"
     today: "today"
@@ -87,6 +89,11 @@ en:
       explanation: "This is to confirm that this email should be used for your account. If you ever lose your password, that's where we'll email a reset link."
       click_required: "You need to click the link below to confirm your email in system."
     need_help: "Have questions or need help? Just reply to this email and our support team will help you sort it out."
+  pagination:
+    first: 'first'
+    last: 'last'
+    prev: 'previous'
+    next: 'next'
   notice:
     changes_saved: "Changes saved"
     registration_successful: 'Welcome! You have signed up successfully'
@@ -112,6 +119,7 @@ en:
     invalid_sign_in: 'Email or password is incorrect'
     confirm: "Are you sure?"
     password:
+      dont_match: "Password and password confirmation don't match"
       incorrect: 'The password you entered is incorrect'
       current_incorrect: 'The current password you entered is incorrect'
       email_not_registered: "Email is not registered"

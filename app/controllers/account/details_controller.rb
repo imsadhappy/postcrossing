@@ -23,8 +23,8 @@ module Account
     end
 
     def destroy
-      @user.destroy
       end_session
+      @user.destroy
       redirect_to root_path, notice: t('notice.account_deleted')
     end
 

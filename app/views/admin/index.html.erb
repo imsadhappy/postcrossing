@@ -1,13 +1,12 @@
 <h1><%= t('title.pages.index') %></h1>
 
 <div id="pages">
-  <% @page_list.each do |page| %>
+  <% @collection.each do |page| %>
     <div id="<%= dom_id page %>">
       <p>
-        <%= page.inspect %>
+        <%= page.title %>
       </p>
   <% end %>
 </div>
 
 <%= render partial: 'layouts/shared/pagination', locals: { pagination: @pagination } %>
-

@@ -3,11 +3,11 @@ module SessionManager
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_request
+    before_action :set_current
     before_action :set_session
   end
 
-  def set_request
+  def set_current
     Current.user_agent = request.user_agent
     Current.ip_address = request.ip
   end
@@ -21,8 +21,9 @@ module SessionManager
     end_session unless @session
   end
 
-  def start_session(user)
-    @session = user.sessions.create!
+  def start_session
+    end_session # should we try ending session before creating?
+    @session = @user.sessions.create!
     Current.session = @session
     RedisStorage.set "session_#{@session.id}", @session.to_json, 24.hours
     cookies.signed.permanent[:postcrossing_user] = {
@@ -32,7 +33,7 @@ module SessionManager
   end
 
   def end_session(session_id = nil)
-    return unless @user&.sessions
+    return unless session_id || @user&.sessions&.first
 
     session_id ||= @user.sessions.first.id
     RedisStorage.del "session_#{session_id}"
