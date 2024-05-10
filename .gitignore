@@ -8,6 +8,8 @@
 /.ruby-lsp
 /.vscode
 /.data
+/.idea
+/.env
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -21,6 +23,7 @@
 !/tmp/pids/.keep
 
 # Ignore uploaded files in development.
+/.phpunit.result.cache
 /storage/*
 !/storage/.keep
 /tmp/storage/*
@@ -28,7 +31,8 @@
 !/tmp/storage/.keep
 
 /public/assets
-/vendor/bundle
+/vendor
+/bootstrap/cache
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
@@ -43,3 +47,4 @@ Gemfile.lock
 /config/credentials/development.key
 
 /config/credentials/production.key
+node_modules
