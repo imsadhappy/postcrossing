@@ -4,14 +4,14 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class RouteTest extends TestCase
 {
     /**
      * Get home route.
      *
      * @return void
      */
-    public function testHome()
+    public function testHomeRouteExists()
     {
         $this->get(route('home'))->assertSuccessful();
     }
