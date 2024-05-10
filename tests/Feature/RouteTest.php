@@ -7,11 +7,11 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Get home route.
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testHome()
     {
         $this->get(route('home'))->assertSuccessful();
     }
