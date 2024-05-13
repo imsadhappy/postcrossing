@@ -7,9 +7,9 @@ use PHPUnit\Framework\TestCase;
 class ConfigTest extends TestCase
 {
     /**
-     * A basic test example.
+     * Check .env file exists.
      */
-    public function testEnvConfigExists(): void
+    public function testEnvExists(): void
     {
         $this->assertFileExists(__DIR__.'/../../.env');
     }
