@@ -2,15 +2,16 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
+//use PHPUnit\Framework\TestCase;
 
-class ConfigTest extends TestCase
+class EnvTest extends TestCase
 {
     /**
      * Check .env file exists.
      */
     public function testEnvExists(): void
     {
-        $this->assertFileExists(__DIR__.'/../../.env');
+        $this->assertFileExists(sprintf('%s/../../.env.%s', __DIR__, $this->app['env']));
     }
 }
