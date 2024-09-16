@@ -1,0 +1,27 @@
+services:
+  postgres:
+    container_name: postcrossing_postgres
+    image: postgres:latest
+    hostname: postcrossing.local
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.data/postgresql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_ROOT_PASSWORD=root
+      - POSTGRES_PASSWORD=postcrossing
+      - POSTGRES_USER=postcrossing
+      - POSTGRES_DB=postcrossing
+  redis:
+    container_name: postcrossing_redis
+    hostname: postcrossing.local
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./.data/redis:/root/redis
+    environment:
+      - REDIS_PASSWORD=postcrossing
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
